@@ -1,0 +1,44 @@
+<ion-view ng-init="loadDoctorProfile()" hide-nav-bar="true">
+
+
+  <ion-content  class="home-background1">
+ <div ng-repeat="x in Doctor1">
+     <div  style="height: 445px;background: url('http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{x.profile}}'), url('http://68.183.101.193/android/338/uploads/uron_person.jpg') no-repeat center;background-size: cover;" >
+     <div ng-click="GoBack()" style="padding: 10px;"><img src="icons/left-arrow.png" transitiontype="slide" direction="right" go-native></div>
+
+     </div>
+     <h4 style="color: #ffffff;margin-top: -52px;padding: 17px;background: rgba(0, 0, 0, 0.43);">{{x.name}} {{x.lname}}</h4>
+ <!--    <div style="background: rgba(0, 0, 0, 0.43);">
+      <h4 style="color: #ffffff;margin-top: -52px;padding: 17px;" ng-class="{'width1' : x.avg_rating != '','width2' : x.avg_rating == ''}">{{x.name}} {{x.lname}}</h4>
+      <div  style="/* margin-left: 55px; */float: right;margin-top: -52px;" ng-if="x.avg_rating != ''">
+         <rating class="rating-block" ng-model="x.avg_rating"  style="pointer-events:none !important;color: #e0e00e;" ></rating>
+        </div>
+        </div> -->
+    <div style="padding: 20px;">
+            <span style="color: #000000;font-size: 16px;font-weight: 500">Email</span>
+            <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{x.email}}</p>
+        
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Home Address</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{x.res_address}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Office Address</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{x.off_address}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Licence No</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{x.license}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Licence Type</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{x.license_type}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500" ng-if="Day != 'InValid Date'">Date Of Birth</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;" ng-if="Day != 'Invalid Date'"> {{Bday}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">About</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;">
+           {{x.aboutfam}}</p>
+         
+    </div>
+    </div>
+
+  </ion-content>
+</ion-view>

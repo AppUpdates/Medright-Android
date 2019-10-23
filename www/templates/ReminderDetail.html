@@ -1,0 +1,90 @@
+<ion-view view-title="Set Reminder" cache-view="false" ng-init="loadSetReminder()" hide-nav-bar="true">
+  <ion-nav-bar class="bar-stable" style="background-color: #50A0FF"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left" ng-click="GoBack()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+
+<div class="bar bar-header" style="background-color: #50A0FF;border-width: 0px;background-image: none;">
+  <button class="button  ion-chevron-left" style="font-size: 25px;color: #ffffff;background-color: transparent;" transitiontype="slide" direction="right" go-native ng-click="GoBack()"></button>
+  <div class="h1 title" style="color: #ffffff">Set Reminder</div>
+</div>
+  <ion-content class="home-background1">
+
+  <br>
+  <center>
+  <div style="background-color: rgba(25, 24, 24, 0.48);height: 130px;">
+  <p style="color: #ffffff;font-size: 25px;padding: 49px;font-weight: 500">{{Setreminder}}</p>
+
+</div>
+  </center>
+
+  <div style="background-color: #50A0FF;height: 130px;">
+
+     <input type="text"  ng-model="SelectedTime" style="background: transparent;color: rgb(255, 255, 255);font-size: 45px;line-height: 40px;height: 49px;text-align: center;width: 100%;margin-left: 5px;-webkit-appearance: none;" ng-click="openTimePicker()" readonly="" />
+       <input type="text"  ng-model="NewSelectedTime" style="background: transparent;color: rgb(255, 255, 255);font-size: 45px;line-height: 40px;height: 49px;text-align: center;width: 100%;margin-left: 5px;-webkit-appearance: none;" readonly="" ng-show="a"/>
+  <!--    <input type="time" ng-model="SelectedTime.value" style="background: transparent;color: rgb(255, 255, 255);font-size: 45px;line-height: 40px;height: 49px;text-align: center;width: 100%;margin-left: 5px;-webkit-appearance: none;"  /> -->
+
+<center> 
+  <div class="row" style="margin-top: 16px;">
+  <div class="col"  ng-click="SaveDate1()">
+  <div  ng-class="{'Active' : status == 1,'NoActive' : status != 1}">{{day1}}</div>
+  </div>
+
+  <div class="col"  ng-click="SaveDate2()">
+  <div  ng-class="{'Active' : status == 2,'NoActive' : status != 2}">{{day2}}</div>
+  </div>
+
+  <div class="col" ng-click="SaveDate3()">
+  <div ng-class="{'Active' : status == 3,'NoActive' : status != 3}" >{{day3}}</div>
+  </div>
+
+  <div class="col"  ng-click="SaveDate4()">
+  <div  ng-class="{'Active' : status == 4,'NoActive' : status != 4}">{{day4}}</div>
+  </div>
+
+  <div class="col"   ng-click="SaveDate5()">
+  <div ng-class="{'Active' : status == 5,'NoActive' : status != 5}">{{day5}}</div>
+  </div>
+
+  <div class="col"   ng-click="SaveDate6()">
+  <div ng-class="{'Active' : status == 6,'NoActive' : status != 6}">{{day6}}</div>
+  </div>
+
+  <div class="col"   ng-click="SaveDate7()">
+  <div ng-class="{'Active' : status == 7,'NoActive' : status != 7}">{{day7}}</div>
+  </div>
+  </div>
+  </center>
+
+  </div>
+
+  <br>
+  <div style="background-color: #50A0FF;height: 130px;">
+    <input ng-show="ShowDate" type="text" ng-model="SelectedDate"  datetime="dd MMMM, yyyy" placeholder="{{SelectedDate}}" style="background: transparent;color: rgb(255, 255, 255);font-size: 31px;line-height: 40px;height: 55px;width: 100%;" readonly="" />
+    <input type="text" ng-model="date"  datetime="dd MMMM, yyyy" placeholder="{{date}}" style="background: transparent;text-align: center;color: rgb(255, 255, 255);font-size: 31px;line-height: 40px;height: 55px;width: 100%;" readonly=""/>
+    <input type="text" ng-model="SelectedDay" datetime="EEEE"  placeholder="{{SelectedDay}}" style="background: transparent;text-align: center;color: rgb(255, 255, 255);font-size: 25px;line-height: 40px;height: 55px;width: 100%;" readonly=""> 
+  </div>
+  
+  
+<center>
+
+  <div class="row" id="footer" class="button-bar">
+  <div class="col">
+    <a class="button button-small" style="color: #ada6a6;background-color: #ffffff;font-weight: 500;
+    border-radius: 25px;padding: 7px 41px;font-size: 17px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="cancelSetReminder()" transitiontype="slide" direction="left" go-native>Cancel</a>
+  </div>
+ <!--  <div class="col">
+    <a class="button button-small" style="color: #ffffff;background-color: #ffffff;font-weight: 500;
+    border-radius: 25px;background-color: #0d2d50;padding: 7px 41px;font-size: 17px;" id="imageURI" ng-click="saveSetRem(SelectedDate,SelectedTime,Setreminder)">Save</a> 
+    </div> -->
+
+     <div class="col">
+    <a class="button button-small" style="color: #ffffff;background-color: #ffffff;font-weight: 500;
+    border-radius: 25px;background-color: #0d2d50;padding: 7px 41px;font-size: 17px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" id="imageURI" ng-click="saveSetRem(SelectedDate,SelectedTime,Setreminder,NewSelectedTime)">Save</a> 
+    </div>
+  </div>
+</center>
+</ion-content>
+</ion-view>
+

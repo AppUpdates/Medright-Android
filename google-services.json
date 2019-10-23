@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "653206155221",
+    "firebase_url": "https://medright-healthcare.firebaseio.com",
+    "project_id": "medright-healthcare",
+    "storage_bucket": "medright-healthcare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653206155221:android:3f65794f38cdf424",
+        "android_client_info": {
+          "package_name": "com.medrighthealthcare.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653206155221-imtqrsicq1mg8i7g3ck2vgoe24vqidgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2ysDzMef_hKXn_WDfaVjTLbOCbg8QFEs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

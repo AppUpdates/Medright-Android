@@ -1,0 +1,17 @@
+<ion-view view-title="Add Discussion" cache-view="false" ng-init="loadAddDisciuss()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <label class="item item-input" style="border-color:green;margin-top: 10px;">
+      <textarea placeholder="Message" rows="5" cols="50" ng-model="DisMessage"></textarea>
+    </label>
+    <button class="button button-small button-balanced" style="float: right;"
+            ng-click="sendMessage(DisMessage)">
+      Send
+    </button>
+  </ion-content>
+</ion-view>
+

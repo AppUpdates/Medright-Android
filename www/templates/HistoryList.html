@@ -1,0 +1,58 @@
+<ion-view view-title="{{title}}" hide-back-button="true" cache-view="false">
+  <ion-nav-bar class="bar-stable"  align-title="center"></ion-nav-bar>
+    <ion-nav-buttons side="left">
+     <button class="button button-clear ion-android-arrow-back"" ng-click="GoBack()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>    
+     </button>
+    </ion-nav-buttons> 
+
+<ion-content padding="true">
+
+<div class="list card" ng-if="type==1 || type ==2" ng-repeat = "x in HealthDetails">
+
+  <label class="item tem-stacked-label history-list-item">
+    <span class="input-label history-list-label">Reason</span>
+    <span class="history-list-content">{{x.reason}}</span>
+  </label>
+
+  <label class="item tem-stacked-label history-list-item">
+    <span class="input-label history-list-label">Hospital</span>
+    <span class="history-list-content">{{x.hospital}}</span>
+  </label>
+
+  <label class="item tem-stacked-label history-list-item">
+    <span class="input-label history-list-label">Year</span>
+    <span class="history-list-content">{{x.year}}</span>
+  </label>
+</div>
+
+<div class="list card" ng-if="type==3" ng-repeat = "x in HealthDetails">
+
+  <label class="item tem-stacked-label history-list-item">
+    <span class="input-label history-list-label">Drug Name</span>
+    <span class="history-list-content">{{x.drug_name}}</span>
+  </label>
+
+  <label class="item tem-stacked-label history-list-item">
+    <span class="input-label history-list-label">Frequency Taken</span>
+    <span class="history-list-content">{{x.drug_frequency}}</span>
+  </label>
+
+</div>
+
+<div class="list card" ng-if="type==4" ng-repeat = "x in HealthDetails">
+
+  <label class="item tem-stacked-label history-list-item">
+    <span class="input-label history-list-label">Drug Name</span>
+    <span class="history-list-content">{{x.drug_name}}</span>
+  </label>
+
+  <label class="item tem-stacked-label history-list-item">
+    <span class="input-label history-list-label">Reaction You Had</span>
+    <span class="history-list-content">{{x.drug_reaction}}</span>
+  </label>
+
+</div>
+   
+</ion-content>
+</ion-view>
+

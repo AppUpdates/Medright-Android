@@ -1,0 +1,50 @@
+<ion-view view-title="Medications" hide-back-button="true" cache-view="false" ng-init="getMedication()"  hide-nav-bar = "true">
+
+  <ion-nav-bar class="bar-stable "></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>  
+  <ion-content class="home-background1">
+
+    <div class="bar bar-header" style="background: transparent;position: initial;">
+  <button class="button button-icon icon ion-navicon" style="color: #000000;" ng-click="openMenu()"></button>
+  <div class="h1 title" style="color: #000000;font-weight: 400;letter-spacing: 0.5px;font-weight: 500;">Medications</div>
+ 
+</div>
+
+     <div class="item item-avatar" ng-repeat="x in MedicationList" style="background: transparent;border: 1px solid white;padding: 10px 10px 10px 85px;" ng-show="WithData">
+          <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{x.profile}}" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+           <button class="button button-small"  style="float: right;background-color: #ffffff!important;color: #191919!important;   border-radius: 19px!important;font-weight: 600!important;width: 72px;font-size: 14px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="GoToRefill(x.email,x.Medication_Name,x.DateDay,x.DocId)">
+          Refill
+          </button>
+          <h2 style="color: #fff;">Doctor : <span style="color:#000000">{{x.name}}</span></h2>
+          <h2 style="color: #fff;">Medication Name : <span style="color:#000000">{{x.Medication_Name}}</span></h2>
+          <h2 style="color: #fff;">Dosage : <span style="color:#000000">{{x.Dosage}}</span></h2>   
+          <h2 style="color: #fff;">Frequency : <span style="color:#000000">{{x.Frequency}}</span></h2>     
+          <h2 style="color: #fff;">Date : <span style="color:#000000">{{x.DateDay}}</span></h2>       
+     </div>
+
+
+  <div class="card" ng-show="NoData">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your Medication list is empty!</p>
+  </div>
+
+ <span ng-show="pagenumber">{{PageNumber}}</span>
+  <ion-infinite-scroll
+    on-infinite="LoadMoreMedicationRecords(PageNumber)"
+    icon="ion-loading-c"
+    distance="5%"
+    ng-if="has_more_MedicationList"
+    immediate-check="false">
+  </ion-infinite-scroll>
+  <center>
+    <ion-spinner icon="spiral"  ng-show="ShowSpinner"></ion-spinner>
+    </center>
+
+  </ion-content>
+</ion-view>
+

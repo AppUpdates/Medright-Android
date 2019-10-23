@@ -1,0 +1,35 @@
+<ion-view view-title="Set Time" cache-view="false">
+ <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="goBack()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content style="background: linear-gradient(#90CAF9,#0D47A1);">
+  
+
+  <br><br>
+
+ <center>
+ 
+    <input placeholder="Select date" ng-model="sch_date" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" style="width:80%;">
+
+    <br>
+
+    <input placeholder="Select time" ng-model="sch_time" class="textbox-n" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" style="width:80%;">
+ 
+</center>
+   
+
+   <br>  
+
+      <div class="button-bar" style="margin-top: -10px;">
+        <button class="button button-full "
+                style="margin: 10px;background-color: #0D47A1;color: #ffffff;" ng-click="SetTime(sch_date, sch_time)">
+          Save
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

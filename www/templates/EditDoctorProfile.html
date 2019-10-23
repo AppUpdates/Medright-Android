@@ -1,0 +1,106 @@
+<ion-view  cache-view="false" ng-init="loadDoctorEditProfile();" hide-nav-bar="true">
+<ion-content class="home-background1">
+
+<div style="padding:10px;">
+  <div ng-click="goBack1()"><img src="icons/left-arrow.png" transitiontype="slide" direction="right" go-native></div>
+  <center>
+  <p style="color:#000000; font-size: 18px;font-weight: 500;margin-top: -27px;">Edit Profile</p>
+  </center>
+</div>
+
+      <div style="text-align: center;margin-top: 10px;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">
+        Tap picture to Edit your profile picture</label>
+      </div>
+      <div style="text-align: center;">
+        <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{UserProfilePic}}" style="border-radius:50%;" width="100"; height="100"; id="UserProfilePic" ng-click="SelectPicture()" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'"/>
+        <p ng-show="pic">{{UserProfilePic}}</p>
+      </div>
+
+      <div style="text-align: center;">
+      <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Mobile No</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+      <input type="text" style="color: #ffffff;" onKeyPress="if(this.value.length==10)return false;"
+       ng-model="EditMobile" placeholder="Mobile No.">
+      </label>
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Emergency Mobile No</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="text" style="color: #ffffff;" onKeyPress="if(this.value.length==10) return false;"
+             ng-model="EditMobileEme" placeholder="Mobile No.">
+      </label>
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Email</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="email" placeholder="Email" style="color: #ffffff;"
+               ng-model="EditEmail">
+      </label>
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Office Address</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="text" placeholder="Office Address" style="color: #ffffff;"
+               ng-model="EditOffAddrress">
+      </label>
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Home Address</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="text" placeholder="Resident Address" style="color: #ffffff;"
+               ng-model="EditResAddrress">
+      </label> 
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Licence No</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="text" placeholder="Licence No." style="color: #ffffff;"
+               ng-model="EditLicenceNumber">
+      </label> 
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Licence Type</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="text" placeholder="Licence Type" style="color: #ffffff;"
+               ng-model="EditLicenceType">
+      </label> 
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit your Date Of Birth</label>
+      </div>
+       <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="text" class="InputStyle" ng-model="EditDOB1" ng-click="openDatePicker()" readonly="" style="background-color: transparent;color: #ffffff;">
+         <!-- <input type="text" class="InputStyle" ng-model="EditDOB1" readonly="" style="background-color: transparent;" ng-show="picker"> -->
+      </label>
+      <!-- <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <input type="text" placeholder="Date Of Birth" style="color: #ffffff;"
+               ng-model="EditDOB">
+      </label>  -->
+
+
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">Edit About</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+        <textarea style="color: #ffffff;background: transparent;" ng-model="EditAbout"></textarea>
+      </label>
+
+      <div class="button-bar">
+        <button class="button button-full "
+                style="margin: 10px;background-color: #ffffff;color: #000000;border-radius: 25px;font-weight: 600;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="updateDoctorProfile(EditMobile,EditMobileEme,EditEmail,EditOffAddrress,EditResAddrress,EditAbout,UserProfilePic,EditLicenceNumber,EditLicenceType,EditDOB1)">
+          Save
+        </button>
+      </div>
+      <br>
+ 
+  </ion-content>
+</ion-view>
+

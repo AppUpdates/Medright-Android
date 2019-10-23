@@ -1,0 +1,147 @@
+<ion-side-menus enable-menu-with-back-views="false" cache-view="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left" style="width: 180px;">
+    <ion-content ng-init="getMenus()">
+      <ion-list style="line-height: 7px;">
+       <!--  <ion-item style="background-color: #ffffff;border:transparent;padding-bottom: 25px;
+                    padding-top: 10px;" menu-close>
+            <img  ng-src="img/logo.png" style="border-radius:50%;height: 70px;width: 70px;margin-left: 83px;">
+            <h4 style="margin-left: 40px;font-family: cursive;font-size: 15px;"><b>MedRight HealthCare</b></h4>           
+        </ion-item> -->
+        <ion-item style="background-color: #ffffff;border:transparent;padding-bottom: 10px;
+                    padding-top: 10px;" menu-close>
+          <center> <img ng-if="PatientLogin" ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/userprofile/{{ProfilePic}}" style="border-radius:50%;height: 70px;width: 70px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></center>
+          <img ng-if="DoctorLogin" ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{ProfilePic}}" style="border-radius:50%;height: 70px;width: 70px;">
+         <!--  <a style="color: black;font-weight: 500;font-size: 16px;float: right;margin-top: 17px;letter-spacing: 2px;" ng-click="logOut()">
+            Sign Out
+          </a> -->
+          <h4 style="margin-left: 54px;font-family: cursive;font-size: 13px;color:#1565C0;letter-spacing: 1px;margin-top: 12px;"><b>MedRight HealthCare</b></h4>  
+        </ion-item>
+
+        <ion-item style="background-color: transparent; border:transparent;"  menu-close ng-click="goToHome()" transitiontype="slide" direction="left" go-native ng-if="PatientLogin" >
+          <img ng-src="icons/home.png">&nbsp;&nbsp;&nbsp;Home
+        </ion-item>
+        <ion-item style="background-color: transparent; border:transparent;"  menu-close ng-click="goToReminder()" ng-if="PatientLogin">
+          <img ng-src="icons/reminder.png">&nbsp;&nbsp;&nbsp;Health Reminders
+        </ion-item>
+
+      <!--   <ion-item style="background-color: transparent; border:transparent;"  menu-close ng-click="goToInsurance()" transitiontype="slide" direction="left" go-native>
+               <img ng-src="icons/insurance.png">&nbsp;&nbsp;&nbsp;      
+              Insurance
+        </ion-item>     -->  
+        
+        <ion-item style="background-color: transparent; border:transparent;"  menu-close ng-click="goToMedicalRecord()" ng-if="PatientLogin"> 
+            <img ng-src="icons/test.png">&nbsp;&nbsp;&nbsp;Medical Records
+        </ion-item>
+
+        <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToDoctors()" transitiontype="slide" direction="left" go-native ng-if="PatientLogin">
+             <img ng-src="icons/doctor.png">&nbsp;&nbsp;&nbsp;<span>Find Doctors</span>
+        </ion-item>
+
+     <!--    <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToPerDoctors()" transitiontype="slide" direction="left" go-native ng-if="PatientLogin">
+          <img ng-src="icons/doctor.png">&nbsp;&nbsp;&nbsp;<span>Personal Doctors</span>
+        </ion-item> -->
+
+      
+
+        <ion-item style="background-color: transparent; border:transparent;"  menu-close ng-click="goToProfile()" ng-if="PatientLogin">
+          <img ng-src="icons/profile.png">&nbsp;&nbsp;&nbsp;Profile
+        </ion-item>
+
+       <!--  <ion-item style="background-color: transparent; border:transparent;"  menu-close ng-click="goToPayment()" ng-if="showProfile">
+              <img ng-src="icons/profile.png">&nbsp;&nbsp;&nbsp;      
+              Payment
+        </ion-item> -->
+
+        <ion-item style="background-color: #50A0FF;border: transparent;color: white;" menu-close ng-click="goToEmail()" ng-if="PatientLogin">
+          <img ng-src="icons/email1.png">&nbsp;&nbsp;&nbsp;Email Your Doctor
+          <span style="float: right;padding-top: 25px 12px;background-color: white;color:#50A0FF;padding: 8px;border-radius: 78px;">15</span>
+        </ion-item>
+
+         <ion-item  style="background-color: transparent; border:transparent;margin: -19px;" ng-if="DoctorLogin">        
+         <ion-toggle ng-model="Available"
+                    ng-change="DisableAvailability(Available)"  style="border-color: transparent;" >
+         <img ng-src="icons/video.png">&nbsp;&nbsp;&nbsp; Video Visit
+        </ion-toggle>
+        </ion-item> 
+
+        <!-- Doctor's Menus Start -->
+        <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToDoctorHome()" ng-if="DoctorLogin">
+            <img ng-src="icons/home.png">&nbsp;&nbsp;&nbsp;Home
+        </ion-item>
+
+          <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToChats()">
+          <img ng-src="icons/discussion.png">&nbsp;&nbsp;&nbsp;Chats
+        </ion-item>
+
+        <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToDoctorApp()" ng-if="DoctorLogin">
+          <img ng-src="icons/schedule.png">&nbsp;&nbsp;&nbsp;Appointments
+        </ion-item>
+
+        <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToDoctorProfile()" ng-if="DoctorLogin">
+          <img ng-src="icons/profile.png">&nbsp;&nbsp;&nbsp;Profile
+        </ion-item>    
+
+        <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToDoctorSchedule()" ng-if="DoctorLogin">
+          <img ng-src="icons/appointment.png">&nbsp;&nbsp;&nbsp;Schedule Time
+        </ion-item>  
+
+        <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToNotes()" ng-if="DoctorLogin">
+          <img ng-src="icons/notes.png">&nbsp;&nbsp;&nbsp;Notes
+        </ion-item> 
+
+        <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToMedication()" ng-if="DoctorLogin">
+          <img ng-src="icons/pill.png">&nbsp;&nbsp;&nbsp;Medication
+        </ion-item> 
+
+        <ion-item  style="background-color: transparent; border:transparent;margin: -19px;" ng-if="DoctorLogin">        
+         <ion-toggle ng-model="Available"
+                    ng-change="DisableAvailability(Available)"  style="border-color: transparent;" >
+         <img ng-src="icons/video.png">&nbsp;&nbsp;&nbsp; Video Visit
+        </ion-toggle>
+        </ion-item> 
+
+          <ion-item style="background-color: transparent; border:transparent;" menu-close ng-click="goToMedication()" ng-click="logOut()">
+          <img ng-src="icons/logout.png">&nbsp;&nbsp;&nbsp;LogOut
+        </ion-item> 
+    <!--     <ion-item>
+          <li class="item item-toggle">
+     Sound
+     <p style="font-size: 13px;">Enable in-app sounds.</p>
+     <label class="toggle toggle-assertive">
+       <input type="checkbox" ng-model="sound" ng-change="EnableSound(sound)">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+        </ion-item>    -->    
+        <!-- Doctor's Menus End -->
+        
+       <!--  <ion-item style="background-color: transparent; border:transparent;"  menu-close ng-click="">
+              <img ng-src="icons/pills.png">&nbsp;&nbsp;&nbsp;      
+              Refill Prescriptions
+        </ion-item> -->
+        <!--  <ion-item style="background-color: transparent; border:transparent;padding-left: 50px;"  menu-close ng-click="">
+            Call Appointments & Advice
+        </ion-item>
+         <ion-item style="background-color: transparent; border:transparent;padding-left: 50px;"  menu-close ng-click="">
+            Facilities
+        </ion-item> 
+         <ion-item style="background-color: transparent; border:transparent;padding-left: 50px;"  menu-close ng-click="">
+            Timely Tips
+        </ion-item>     -->
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

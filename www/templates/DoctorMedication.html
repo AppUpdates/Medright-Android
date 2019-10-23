@@ -1,0 +1,55 @@
+<ion-view view-title="Add Medication" hide-back-button="true" cache-view="false" ng-init="GetPatients()" hide-nav-bar="true">
+
+<ion-content class="home-background1">
+
+  <div class="bar bar-header" style="background: transparent;border-width: 0px;">
+  <button class="button button-icon icon ion-navicon" style="color: #000000;" ng-click="openMenu()"></button>
+  <div class="h1 title" style="color: #000000;font-weight: 500;letter-spacing: 0.5px;">Add Medication</div>
+  <button class="button button-icon  ion-arrow-down-c" style="color: #000000;" ng-click="MedicationList()" transitiontype="slide" direction="left" go-native></button>
+</div>
+
+
+
+<br><br><br>
+
+<div style="margin-right: 10px;margin-left: 10px;">
+
+    <label class="item item-input item-select" style="width:100%;border-radius: 7px;background: transparent;border: 1px solid #ffffff;"> 
+          
+          <div class="input-label">
+          <p style="color: #ffffff; font-size: inherit;">Patient</p>
+          </div>
+
+    
+          <select style="color: #000000;background: transparent;color: #ffffff" ng-model="patient" ng-options="data.FirstName for data in plan1" >
+          </select>
+   </label>
+
+<br><br>
+      <label class="item item-input"  style="width:100%;border-radius: 7px;background: transparent;border: 1px solid #ffffff;">
+        <input class="change" type="text" placeholder="Medication Name" style="color: #ffffff;background: transparent;"
+               ng-model="MedicationName">
+      </label>
+
+ <br><br>
+      <label class="item item-input" style="width:100%;border-radius: 7px;background: transparent;border: 1px solid #ffffff;">
+        <input class="change" type="text" placeholder="Add Dosage" style="color: #ffffff;background: transparent;"
+               ng-model="Dosage">
+      </label>
+
+<br><br>
+      <label class="item item-input"  style="width:100%;border-radius: 7px;background: transparent;border: 1px solid #ffffff;">
+        <input class="change" type="text" placeholder="Add Frequency " style="color: #ffffff;background: transparent;"
+               ng-model="Frequency ">
+      </label>
+</div>
+<br>
+<center>
+<button class="button button-small" style="margin: 10px;color: #000000;background-color: #ffffff; padding-right: 15px; padding-left: 15px;border-radius: 25px;min-width: 112px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-size: 15px;font-weight: 600" ng-click="SaveMedication(patient,MedicationName,Dosage,Frequency)">
+Save
+</button>
+</center>
+
+  </ion-content>
+</ion-view>
+

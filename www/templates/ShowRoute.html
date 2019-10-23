@@ -1,0 +1,31 @@
+<ion-view view-title="Route" cache-view="false" ng-init="loadMap()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+      <label class="item item-input" style="height: 31px;">
+        <span class="input-label" style="font-size: 14px">From</span>
+        :&nbsp;<input type="text" ng-model="start" ng-change="enableBtn()" id="start"/>
+      </label>
+      <label class="item item-input" style="height: 31px;">
+        <span class="input-label" style="font-size: 14px">To</span>
+        :&nbsp;<input type="text" ng-model="end" readonly id="end"/>
+      </label><br>
+      <center>
+        <div class="button-bar" style="padding: 5px;">
+          <button class="button button-small" ng-click="GetCurrentLocation()"
+                  style="height: 12px;float: left;background-color: #0D47A1;color: #ffffff;">My Location</button>&nbsp;&nbsp;
+
+          <button class="button button-small" ng-click="showDirection(start,end)"
+                  style="height: 12px;float: right;background-color:  #0D47A1;color: #ffffff;" ng-disabled="!btnstatus">Show Directions</button>
+        </div>
+      </center>
+    </div>
+
+    <div id="map"></div>
+  </ion-content>
+</ion-view>
+

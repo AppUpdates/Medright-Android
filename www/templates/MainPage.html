@@ -1,0 +1,56 @@
+<ion-view view-title="My Doctor Online" hide-back-button="true" cache-view="false" ng-init="loadMainPage()"   hide-nav-bar = "true">
+   <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()">
+    </button>
+  </ion-nav-buttons>
+  <ion-content scroll="false">
+    <div class="bar bar-header" style="background: #ffffff;border-width: 0px;">
+  <button class="button button-icon icon ion-navicon" style="color: #50A0FF;" ng-click="openMenu()"></button>
+  <div class="h1 title" style="color: #50A0FF;font-weight: normal;letter-spacing: 0.5px;font-family: 'Segoe UI' !important;font-size: 18px;">{{geetings}} {{UserName}}</div>
+  <!--  <span  style="color: black;font-size: 20px;padding: 6px;margin-left: 8px;">M<span style="color:orange">ed</span>R<span style="color:orange">ight</span></span>
+      <span style="color: white;letter-spacing: 5px;margin-top: 7px;margin-left: 6px;font-size: 17px;background-color: black;margin-bottom: 4px;">Healthcare</span> -->
+ 
+</div>
+<br><br>
+    <div>
+      <img src="img/11.png" style="width: 100%;"> 
+    </div>
+
+   <center><button class="button button-small" style="width: 235px;height: 37px;border-radius: 25px;background: #50A0FF;color: #fff;font-size: 17px;margin-top: -20px;">
+  My Doctor Online
+  </button></center>
+
+  <br>
+  <center>
+    <div class="row">
+
+    <div class="col" transitiontype="slide" direction="left" go-native><img src="img/2.png" style="border-radius:50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" width="85"; height="85"; ng-click="goToModule(1)"/>
+    <p>HEALTH HISTORY</p></div>
+
+    <div class="col" ng-click="goToModule(2)" transitiontype="slide" direction="left" go-native> <img src="img/33.png" style="border-radius:50%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" width="85"; height="85"; /> <p>APPOINTMENT</p></div>
+
+    <div class="col" transitiontype="slide" direction="left" go-native> <img src="img/42.png" style="border-radius:50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" width="85"; height="85"; ng-click="goToModule(3)" /><p>REMINDER</p></div>
+    </div>
+
+
+  <div class="row" style="margin-top: 6px;">
+  <div class="col" transitiontype="slide" direction="left" go-native> <img src="img/52.png" style="border-radius:50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" width="85"; height="85"; ng-click="goToModule(4)"/><p>TEST RESULT</p></div>
+
+  <div class="col" transitiontype="slide" direction="left" go-native> <img src="img/62.png" style="border-radius:50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" width="85"; height="85"; ng-click="goToModule(5)"/><p>MY DOCTORS</p></div>
+
+  <div class="col" transitiontype="slide" direction="left" go-native> <img src="img/7.png" style="border-radius:50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" width="85"; height="85";  ng-click="goToModule(6)"/><p>VIDEO VISIT</p></div>
+  </div>
+</center>
+
+ <ion-footer-bar ng-show="ShowMessage" style="    background: transparent;">
+ <!-- <div class="animated bounce delay-2s">Example</div> -->
+          <div  class="card yourElement animated fadeInUp" style=" background: rgba(0, 0, 0, 0.8);   width: 100%;margin-top: -56px; margin-left: -1px; margin-right: -1px;text-align: center;">
+          
+           <i class="ion-close-round" style="float: right;margin-top: 19px;margin-right: 12px;color: #ffffff;font-size: 20px;" ng-click="CloseMessage()"></i>
+           <br>
+           <p style="font-size: 16px;color: #ffffff">First In-Office consultation is FREE</p>  
+         </div>
+</ion-footer-bar>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,44 @@
+<ion-view ng-init="loadDoctorHome()" hide-nav-bar="true">
+
+  <ion-content  class="home-background1">
+
+     <div  style="height: 350px;background: url('http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{UserProfilePic}}') no-repeat center;background-size: cover;">
+     <i class="ion-navicon" ng-click="openMenu()" style="font-size: 33px;margin-left: 10px;color: #000000;"></i>
+     </div>
+     
+     <button class="button button-small" style="width: 50px;height: 50px;border-radius: 25px;background: #50A0FF;color: #fff;font-size: 17px;margin-top: -25px;border: 1px solid #ffffff;float: right;margin-right: 20px;" ng-click="editDoctorProfile()" transitiontype="slide" direction="left" go-native>
+   <i class="ion-edit" style="font-size: 20px;color: #ffffff;"  transitiontype="slide" direction="left" go-native ng-click="editDoctorProfile()" ></i>
+     </div>
+  </button>
+     <h4 style="color: #ffffff;margin-top: -40px;margin-left: 20px;">{{DoctorName}}</h4>
+
+    <div style="padding: 20px;">
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Mobile</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{DoctorMobile}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Email</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{DoctorEmail}}</p>
+        
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Home Address</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{DoctorResAdd}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Office Address</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{DoctorOffAdd}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Licence No</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{LicenseNo}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Licence Type</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{LicenseType}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">Date Of Birth</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;"> {{Bday}}</p>
+
+          <span style="color: #000000;font-size: 16px;font-weight: 500">About</span>
+          <p style="color: #ffffff;font-size: 15px;font-weight: 400;margin-top: 10px;">
+           {{About}}</p>
+         
+    </div>
+
+  </ion-content>
+</ion-view>

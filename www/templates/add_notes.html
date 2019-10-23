@@ -1,0 +1,30 @@
+<ion-view view-title="Add Notes" hide-back-button="true" cache-view="false">
+<ion-nav-bar class="bar-stable "></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="goBackToMainPAge()">
+    </button>
+</ion-nav-buttons>
+
+<ion-content style="background: linear-gradient(#90CAF9,#0D47A1);" padding="true">
+<br>
+
+<center>
+ <img ng-src="img/mic.png" ng-click="StartListening()" ng-hide="mic"> 
+ <h3 style="color: #ffffff;" ng-show="listen">Listening...</h3>
+</center>
+
+<br>
+
+<textarea ng-model="speech.speech_text" type="text" placeholder="" id="spk" style="width: 100%;height: 85px; border:1px solid #000;margin-top: 10px;">></textarea>
+
+
+<br>
+<center>
+<button class="button button-small" style="margin: 10px;color: #ffffff;background-color: #dc5d2e; padding-right: 15px; padding-left: 15px;" ng-click="SaveNotes()">
+<b>Save</b>
+</button>
+</center>
+
+</ion-content>
+</ion-view>
+

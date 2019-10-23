@@ -1,0 +1,38 @@
+SELECT
+  t1.doc_id,
+  t2.id,
+  avg(t3.total) AS avg_rating,
+  CONCAT('[',GROUP_CONCAT(CONCAT('{',t2.schedule,'}')),']') AS schedule_times
+FROM
+  tbl_doctor AS t1
+  LEFT JOIN user_review AS t3 ON t3.doc_id = t1.doc_id
+INNER JOIN tbl_schedule AS t2 ON t1.doc_id = t2.doc_id
+ WHERE t2.Start="2018-05-20"
+GROUP BY
+  t1.doc_id
+
+  SELECT
+  t1.doc_id,
+  t2.id,
+  avg(t3.total) AS avg_rating,
+  CONCAT('[',GROUP_CONCAT(CONCAT('{',t2.schedule,'}')),']') AS schedule_times
+FROM
+  tbl_doctor AS t1
+  LEFT JOIN user_review AS t3 ON t3.doc_id = t1.doc_id
+INNER JOIN tbl_schedule AS t2 ON t1.doc_id = t2.doc_id
+ WHERE t2.Start="2018-05-20"
+GROUP BY
+  t1.doc_id
+
+  SELECT
+tbl_doctor.doc_id,tbl_doctor.off_address,tbl_doctor.name,tbl_doctor.lname,tbl_doctor.profile,tbl_doctor.emer_contact,tbl_doctor.email,tbl_doctor.IsAvailable,doctor_speciality.*, 
+  tbl_schedule.id,
+  avg(user_review.total) AS avg_rating,
+ CONCAT(GROUP_CONCAT(CONCAT(tbl_schedule.schedule))) AS schedule_times	
+FROM
+  tbl_doctor 
+  LEFT JOIN user_review  ON user_review.doc_id = tbl_doctor.doc_id
+INNER JOIN tbl_schedule ON tbl_doctor.doc_id = tbl_schedule.doc_id
+INNER JOIN doctor_speciality ON tbl_doctor.speciality=doctor_speciality.id
+ WHERE tbl_schedule.Start='2018-05-20' And tbl_doctor.doc_id = (SELECT doc_id FROM tbl_doctor INNER JOIN tbl_users ON tbl_users.service_provider = tbl_doctor.doc_id WHERE tbl_users.UserId = '235') OR tbl_doctor.doc_id = (SELECT works_with FROM tbl_doctor WHERE doc_id IN(SELECT doc_id FROM tbl_doctor INNER JOIN tbl_users ON tbl_users.service_provider = tbl_doctor.doc_id WHERE tbl_users.UserId = 235)) GROUP BY
+  tbl_doctor.doc_id

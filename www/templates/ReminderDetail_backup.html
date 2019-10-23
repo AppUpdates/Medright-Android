@@ -1,0 +1,38 @@
+<ion-view view-title="{{Setreminder}}" cache-view="false" ng-init="loadSetReminder()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left" ng-click="GoBack()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+   <button class="button button-clear" ng-click="cancelSetReminder()">Close</button>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="padding">
+ 
+  <div style="text-align: center;font-size: 20px;margin-top: 20px;" ng-class="{'class1' : status1 == 'Tommorow' , 'class2' : status1 != 'Tommorow'}" ng-click="SaveStatus2()">Tommorow</div>
+
+  <img src="img/cc.png" style="margin-top: -20px;float: left;">
+
+  <div style="font-size: 20px;float: left;margin-left: 10px;margin-top: -19px" ng-class="{'class1' : status1 == 'Today' , 'class2' : status1 != 'Today'}" ng-click="SaveStatus1()">Today</div>
+
+  <div style="float: right;font-size: 20px;margin-top: -21px;" ng-class="{'class1' : status1 == 'OnaDate' , 'class2' : status1 != 'OnaDate'}" ng-click="SaveStatus3()">On a Date</div>
+
+  <div style="margin-top: 40px;" ng-show="ShowDate1">
+     <img src="img/calendar.png">
+    <input type="date" ng-model="SelectedDate" placeholder="{{SelectedDate}}" style="margin-top: -40px;margin-left: 45px;font-size: 19px;background: transparent;" />
+  </div>
+
+  <div ng-class="{'class3' : status1 == 'Tommorow','class5' : status1 == 'Today', 'class4' : status1 == 'OnaDate'}">
+    <img src="img/clc.png">
+    <input type="time" ng-model="SelectedTime" value="{{SelectedTime}}" style="margin-top: -40px;margin-left: 45px;font-size: 23px;background: transparent;width: 162px;" />
+  </div>
+
+    <br><br><br>
+    <center>
+    <button class="button button-block" style="background-color: #50A0FF;font-size: 19px;color: #fff;margin-top: -10px;height: 40px;width: 305px;border-radius: 25px;" ng-click="saveSetReminder(SelectedDate,SelectedTime,Setreminder,status1)">Save</button>
+    </center>
+  </ion-content>
+</ion-view>
+

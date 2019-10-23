@@ -1,0 +1,64 @@
+<ion-view view-title="Email Doctor" hide-back-button="true" cache-view="false" ng-init="getPersonalDocs()"  hide-nav-bar = "true">
+
+
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+   <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+  </ion-nav-buttons>
+
+  
+
+  <ion-content class="home-background1">
+  <div class="bar bar-header" style="background: transparent;position: initial;">
+  <button class="button button-icon icon ion-navicon" style="color: #000000;" ng-click="openMenu()"></button>
+  <div class="h1 title" style="color: #000000;font-weight: 400;letter-spacing: 0.5px;font-weight: 500;">Email Doctor</div>
+ 
+</div>
+   <!--  <i class="ion-navicon" style="color: black;margin-left: 8px;font-size: 36px;top: 5px;" ng-click="openMenu()"></i>
+      <center>
+      <p style="color: #000000;font-size: 20px;font-weight: 500;margin-top: -25px;">Email Doctor</p>
+      </center><br> -->
+
+
+
+  <div ng-show="ShowData1" style="margin-left: 10px;margin-right: 10px;">
+    <div class="HeadDivStyle">
+      <label class="HeadLabelStyle" style="margin-left: 12px">Doctors</label>
+    </div>
+    <label class="item item-input1 item-select" style="margin-top: 3px;border:1.5px solid white;border-radius: 5px;">
+      <div class="input-label" style="font-weight: 500;">Doctors&nbsp;</div>
+      <select ng-model="EmailDoctorId"
+              ng-options="c.email as c.name for c in PersonalDocList" style="background:transparent;">
+              <option value="">Select Doctor</option>
+      </select>
+    </label><br>
+
+
+
+    <div class="HeadDivStyle">
+      <label class="HeadLabelStyle" style="margin-left: 12px">Message</label>
+    </div>  
+    <label class="item item-input" style="border-color:green;border-radius: 5px;margin:15px;margin-top: 5px">
+      <textarea placeholder="Message" rows="5" cols="50" ng-model="EmailMsg"></textarea>
+    </label><br><br>
+
+   
+    <div class="padding">
+     <button class="button button-full button-balanced" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);background-color: #ffffff!important;color: #191919!important;  border-radius: 22px!important;font-weight: 600!important;font-size: 18px!important;" ng-click="sendEmail(EmailDoctorId,EmailMsg)">
+        Send
+      </button></div>
+
+
+    </div>
+
+  <div class="card" ng-show="NoData1" style="margin-bottom: 10px;">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your personal doctor list is empty!</p>
+  <a class="button button-small" style="color:#f8f8f8;background-color: #50A0FF;font-size: 15px;width:40%;margin-bottom: 25px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);"  ng-click="GoToAddPersonalDoctors()">ADD</a>
+  <br>
+  </div>
+  </ion-content>
+</ion-view>
+

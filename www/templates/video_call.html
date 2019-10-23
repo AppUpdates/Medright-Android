@@ -1,0 +1,99 @@
+<ion-view title="{{u_name}}" style="top: 0px;">
+ <ion-nav-bar class="bar-stable"></ion-nav-bar>
+ <ion-nav-buttons side="right" ng-show="Endcall">
+    <button class="button button-clear" ng-click="GoBack()"  style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+     <label id="minutes" style="font-weight: 500;font-size: 19px;" ng-show="Endcall">00</label><label style="font-weight: 500;font-size: 19px;" ng-show="Endcall">:</label><label ng-show="Endcall" id="seconds" style="font-weight: 500;font-size: 19px;">00</label>
+    </button>
+</ion-nav-buttons>
+
+  <ion-content class="home-background1">
+  <!--  <button class="button button-small" ng-click="Call()">Call</button>
+   <button class="button button-small" ng-click="Accept()">Accept</button> -->
+  
+   
+
+<br><br>
+<p ng-show="CallButoon" style="font-size: 24px;"><b>&nbsp;&nbsp;&nbsp;Incoming Consultation...</b></p>
+<center>
+
+<div ng-show="CallButoon" style="  position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);">
+
+<!-- <button class="button button-small" style="margin: 10px;color: #ffffff;background-color: green;padding-right: 15px;padding-left: 15px;width: 100px;height: 37px;font-size: 16px;" ng-click="Call()">
+<b>Call</b>
+</button>
+<button class="button button-small" style="margin: 10px;color: #ffffff;background-color: #c50d0d;padding-right: 15px;padding-left: 15px;width: 100px;height: 37px;font-size: 16px;" ng-click="GoBacktoHome()">
+<b>Reject</b>
+</button> -->
+
+<button class="button button-small" style="margin: 10px;color: #191919;background-color: #ffffff;padding-right: 15px;padding-left: 15px;width: 100px;height: 37px;font-size: 14px;border-radius: 19px!important;font-weight: 600!important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="Call()">
+<b>Accept</b>
+</button>
+<button class="button button-small" style="margin: 10px;color: #191919;background-color: #ffffff;padding-right: 15px;padding-left: 15px;width: 100px;height: 37px;font-size: 14px;border-radius: 19px!important;font-weight: 600!important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="GoBacktoHome()">
+<b>Reject</b>
+</button>
+
+<br><br>
+<button class="button button-small" style="margin: 10px;color: #191919;background-color: #ffffff;padding-right: 15px;padding-left: 15px; height: 37px;font-size: 14px; border-radius: 19px!important;font-weight: 600!important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="ViewPatientHelathHistory()">
+<b>View History Form</b>
+</button>
+
+
+
+</div>
+</center>
+
+<div id="videos">
+    <div id="subscriber" ></div>
+    <!-- <div id="subscriber1" ng-show="receiver"></div> -->
+    <div id="publisher" style="width: 106px;height: 126px;" ></div>
+     <!-- <div id="publisher1" ng-show="sender"></div> -->
+</div>
+
+<ion-footer-bar style="background: #ffffff;height: 53px;" ng-show="Endcall" >
+<div class="row" style="text-align: center;padding: 0px;">
+ 
+<!-- <button  class="button" id="switchcamera" style="background-color: #111;font-size: 19px;color: #fff;margin-top: 0px;height: 47px;padding: 7px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);border-radius: 50px;opacity: 0.5;float: right;z-index: 10" >
+           <img src="img/switch-camera.png">
+           </button> -->
+  <div class="col">
+           <button class="button" id="offAudio" style="background-color: #111;font-size: 19px;color: #fff;margin-top: -8px;height: 47px;padding: 7px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);border-radius: 50px;opacity: 0.5" ng-show="offAudio1" ng-click="offAudio()">
+          <img src="img/microphone.png">
+           </button>
+
+           <button class="button" id="onAudio" style="background-color: #111;font-size: 19px;color: #fff;margin-top: -8px;height: 47px;padding: 7px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);border-radius: 50px;opacity: 0.5" ng-show="onAudio1" ng-click="onAudio()">
+          <img src="img/microphone1.png" >
+           </button>
+  </div>
+
+  <div class="col">
+           <button class="button" style="background-color: #c50d0d;font-size: 19px;color: #fff;margin-top: -8px;height: 47px;padding: 7px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);border-radius: 50px;" ng-click="EndCall()" transitiontype="slide" direction="left" go-native>
+           <img src="img/endcall1.png">
+           </button>
+  </div>
+
+  <div class="col">
+           <button  class="button" id="offVideo" style="background-color: #111;font-size: 19px;color: #fff;margin-top: -8px;height: 47px;padding: 7px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);border-radius: 50px;opacity: 0.5" ng-show="offVideo1" ng-click="offVideo()">
+           <img src="img/video.png">
+           </button>
+
+            <button  class="button" id="onVideo" style="background-color: #111;font-size: 19px;color: #fff;margin-top: -8px;height: 47px;padding: 7px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);border-radius: 50px;opacity: 0.5" ng-show="onVideo1" ng-click="onVideo()">
+           <img src="img/video-off.png">
+           </button>
+  </div>
+
+
+  </div>
+
+
+<br><br>
+</ion-footer-bar>
+</ion-content>
+ <!-- ng-show="Endcall" -->
+
+
+</ion-view>

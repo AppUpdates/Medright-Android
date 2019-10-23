@@ -1,0 +1,159 @@
+<ion-view view-title="Video Visits" cache-view="false" ng-init="LoadDoctors()">
+
+
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+
+  <ion-nav-buttons side="left">
+    <button class="button  button-clear ion-chevron-left" ng-click="GoBack()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+
+
+  <ion-content>
+
+
+  <div class="item item-divider">
+   Personal Doctors
+  </div>
+
+  <p class="item" style="color:#1565C0;">Expected wait time is 15 minutes or less</p>
+  
+  <div class="card" ng-show="NoData1">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your personal doctor list is empty!</p>
+  </div>
+
+  <div ng-repeat="x in PersonalDoctors" ng-if="$index%2 == 0"  ng-show="WithData1" class="row colums-three" style="margin-top: 0px;">
+         <div class="col" style="margin: 1px 1px;  background-color: transparent;" ng-click="VideoChat(PersonalDoctors[$index].doc_id, PersonalDoctors[$index].name, PersonalDoctors[$index].profile)">
+           <div class="item item-image animated slideInLeft" style="border-color: #ffffff;">
+                <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{PersonalDoctors[$index].profile}}" style="border-radius: 50%; width:80px; height:80px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+           
+                <a class="item item-text-wrap" style="border-color: #ffffff;">
+                    <center>
+                        <h3 style="color: #000000;font-weight: 600;">{{PersonalDoctors[$index].name}}</h3>
+                       
+                    </center>
+                </a>
+                </div>
+         </div> 
+
+
+         <div class="col" ng-style="{'visibility': !!PersonalDoctors[$index + 1] ? 'visible' : 'hidden'}" style="margin: 1px 1px;  background-color: transparent;" ng-click="VideoChat(PersonalDoctors[$index+1].doc_id, PersonalDoctors[$index+1].name,  PersonalDoctors[$index+1].profile)">
+
+                <div class="item item-image animated slideInDown" style="border-color: #ffffff;">
+                    <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{PersonalDoctors[$index+1].profile}}" style="border-radius: 50%; width:80px; height:80px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+                
+                <a class="item item-text-wrap" style="border-color: #ffffff;">
+                    <center>
+                        <h3 style="color: #000000;font-weight: 600;">{{PersonalDoctors[$index+1].name}}</h3>
+                        </center>
+                </a>
+                </div>
+
+        </div>
+
+          <div class="col" ng-style="{'visibility': !!PersonalDoctors[$index + 2] ? 'visible' : 'hidden'}" style="margin: 1px 1px;  background-color: transparent;"  ng-click="VideoChat(PersonalDoctors[$index+2].doc_id, PersonalDoctors[$index+2].name, PersonalDoctors[$index+2].profile)">
+
+                <div class="item item-image" style="border-color: #ffffff;">
+                    <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{PersonalDoctors[$index+2].profile}}" style="border-radius: 50%; width:80px; height:80px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+                
+                <a class="item item-text-wrap" style="border-color: #ffffff;">
+                    <center>
+                        <h3 style="color: #000000;font-weight: 600;">{{PersonalDoctors[$index+2].name}}</h3>
+                       
+                    </center>
+                </a>
+                </div>
+
+        </div>
+
+   </div>          
+
+
+  
+
+  <div class="item item-divider">
+   Available 24/7 | Free for Members
+  </div>
+
+  <div class="card" ng-show="NoData">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">No Available doctors found!</p>
+  </div>
+
+   <div ng-repeat="e in AvailableDoctors" ng-if="$index%3 == 0"  ng-show="WithData" class="row colums-three" style="margin-top: 0px;">
+
+
+         <div class="col" ng-style="{'visibility': !!AvailableDoctors[$index] ? 'visible' : 'hidden'}" style="margin: 1px 1px;  background-color: transparent;" ng-click="VideoChat(AvailableDoctors[$index].doc_id, AvailableDoctors[$index].name, AvailableDoctors[$index].profile)">
+           <div class="item item-image animated slideInLeft" style="border-color: #ffffff;">
+                <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{AvailableDoctors[$index].profile}}" style="border-radius: 50%; width:80px; height:80px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+           
+                <a class="item item-text-wrap" style="border-color: #ffffff;">
+                    <center>
+                        <h3 style="color: #000000;font-weight: 600;">{{AvailableDoctors[$index].name}}</h3>
+                        
+                    </center>
+                </a>
+                </div>
+         </div> 
+
+
+         <div class="col" ng-style="{'visibility': !!AvailableDoctors[$index + 1] ? 'visible' : 'hidden'}" style="margin: 1px 1px;  background-color: transparent;" ng-click="VideoChat(AvailableDoctors[$index+1].doc_id, AvailableDoctors[$index+1].name, AvailableDoctors[$index+1].profile)">
+
+                <div class="item item-image animated slideInDown" style="border-color: #ffffff;">
+                    <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{AvailableDoctors[$index+1].profile}}" style="border-radius: 50%; width:80px; height:80px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+                
+                <a class="item item-text-wrap" style="border-color: #ffffff;">
+                    <center>
+                        <h3 style="color: #000000;font-weight: 600;">{{AvailableDoctors[$index+1].name}}</h3>
+                        
+                    </center>
+                </a>
+                </div>
+
+        </div>
+
+         <div class="col" ng-style="{'visibility': !!AvailableDoctors[$index + 2] ? 'visible' : 'hidden'}" style="margin: 1px 1px;  background-color: transparent;"  ng-click="VideoChat(AvailableDoctors[$index+2].doc_id, AvailableDoctors[$index+2].name, AvailableDoctors[$index+2].profile)">
+
+                <div class="item item-image animated slideInRight" style="border-color: #ffffff;">
+                    <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{AvailableDoctors[$index+2].profile}}" style="border-radius: 50%; width:80px; height:80px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+                
+                <a class="item item-text-wrap" style="border-color: #ffffff;">
+                    <center>
+                        <h3 style="color: #000000;font-weight: 600;">{{AvailableDoctors[$index+2].name}}</h3>
+                       
+                    </center>
+                </a>
+          </div>
+
+        </div>
+  </div><br><br><br><br>
+
+<!-- <center>
+  <div>
+    <i class="ion-ios-videocam" style="font-size: 32px; color:#1565C0;"></i>
+  </div>
+  </center>
+ -->
+  <br>
+  </ion-content>
+
+    <div  class="footer" style=" position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #50A0FF;
+  
+   text-align: center;"  ng-click="GoToVideoVisit()" transitiontype="slide" direction="left" go-native>
+<br>
+   <p style="font-size: 17px;color: #ffffff">Expected wait time is 15 minutes or less</p>
+   <i class="ion-ios-videocam" style="font-size: 70px; color:#ffffff;" ></i>
+ 
+</div>
+
+</ion-view>
+

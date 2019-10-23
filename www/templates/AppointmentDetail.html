@@ -1,0 +1,75 @@
+<ion-view view-title="Apointment Detail" hide-back-button="true" cache-view="false" ng-init="GetAppointmentDetail()">
+
+<ion-nav-bar class="bar-stable "></ion-nav-bar>
+<ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left" ng-click="GoBack()"  style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+</ion-nav-buttons>
+
+<ion-content class="home-background1">
+
+<div  style="background-color: transparent;margin-bottom: -20px;
+    margin-top: 15px;border : 1px solid #ffffff;margin: 17px -1px;">
+
+<a class="button button-icon  ion-chevron-down" 
+    style="color: #fff;">&nbsp;&nbsp;{{Name}}</a>  
+<span class="badge" style="background-color: #ffffff;
+    color: #000000;
+    margin-top: 12px;
+    float: right;
+    margin-right: 10px;" ng-click="ViewPatientHelathHistory()">View History Form</span> 
+</div>
+<br>
+<div class="card" style="padding-bottom: 10px;">
+
+<br>
+  <ul style="margin-left: 10px;">
+  <div>
+  <li style=" display: block;
+  position: relative;">
+    <input type="radio" id="f-option"  ng-model="status.name" value="Complete">
+    <label for="f-option" style="font-size: 20px;">&nbsp;&nbsp;Complete</label>    
+    <div class="check"></div>
+  </li>
+  </div>
+  <br>
+  <div>
+  <li  style=" display: block;
+  position: relative;">
+    <input type="radio" id="s-option"  ng-model="status.name" value="Not Complete">
+    <label for="s-option" style="font-size: 20px;">&nbsp;&nbsp;Not Complete</label>
+    
+    <div class="check"><div class="inside"></div></div>
+  </li>
+  </div>
+  <br>
+  <div>
+  <li  style=" display: block;
+  position: relative;">
+    <input type="radio" id="t-option"  ng-model="status.name" value="followup">
+    <label for="t-option" style="font-size: 20px;">&nbsp;&nbsp;follow up</label>    
+    <div class="check"><div class="inside"></div></div>
+  </li>
+  </div>
+</ul>
+
+<br><br>
+<center>
+<a class="button button-small" style="color:#f8f8f8;background-color: #50A0FF;font-size: 15px;width:40%;border-radius: 25px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-weight: 600"  ng-click="SaveAppointmentStatus()">SAVE</a>
+
+<br>
+</center>
+</div>
+<br><br>
+ <ion-footer-bar ng-show="ShowMessage" style="    background: transparent;">
+ <!-- <div class="animated bounce delay-2s">Example</div> -->
+          <div  class="card yourElement animated fadeInUp" style=" background: rgba(0, 0, 0, 0.8);   width: 100%;margin-top: -56px; margin-left: -1px; margin-right: -1px;text-align: center;">
+          
+           <i class="ion-close-round" style="float: right;margin-top: 19px;margin-right: 12px;color: #ffffff;font-size: 20px;" ng-click="CloseMessage()"></i>
+           <br>
+           <p style="font-size: 16px;color: #ffffff">{{message1}}</p>  
+         </div>
+</ion-footer-bar>
+  </ion-content>
+</ion-view>
+

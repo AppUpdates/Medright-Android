@@ -1,0 +1,100 @@
+<ion-view view-title="Personal Doctors" hide-nav-bar="true" cache-view="false" ng-init="getPersonalDocs()">
+  <ion-content class="home-background1">
+
+    <div class="div-bg-image" style="padding: 10px;">
+      <div ng-click="goHome()"><img src="icons/left-arrow.png" transitiontype="slide" direction="right" go-native></div>
+      <center>
+      <p style="color:#000000; font-size: 18px;font-weight: 500;margin-top: -27px;">Personal doctors</p>
+      </center>
+
+      <label class="item item-input1 icon item-icon-right" style="margin-right: 2px;margin-left: 2px">
+        <i class="icon ion-search placeholder-icon" style="font-size: 16px;color: #444;margin-right: -15px;"></i>
+        <input type="text" class="a" placeholder="Search by Name" style="color: #606067;"
+               ng-model="SearchName">
+      </label>
+
+      <label class="item item-input1 item-select" style="margin-right: 2px;margin-left: 2px">
+        <div class="input-label" style="font-weight: 500;">Filter By&nbsp;</div>
+        <select ng-model="FilterId"
+                ng-options="c.Fid as c.Fname for c in FilterByList"
+                ng-change="filterChanged(FilterId)" required>
+          <option value="">Select Filter By</option>
+        </select>
+      </label>
+
+      <label class="item item-input1 item-select" style="margin-right: 2px;margin-left: 2px">
+        <div class="input-label"  style="font-weight: 500;">Sort By&nbsp;</div>
+        <select ng-model="SortId"
+                ng-options="c.speciality as c.speciality for c in SortByList"
+                ng-change="applySort(SortId)" required>
+          <option value="">Select Sort By</option>
+        </select>
+      </label>
+    </div>
+
+    <center>
+      <button  class="button button-small" style="height: 43px;border-radius: 25px;background: #50A0FF;color: #fff;font-size: 17px;margin-top: -19px;border: 2px solid white;width: 45px;"><i class="ion-chevron-down" style="color:white"></i></button>
+    </center><br>
+
+    <div class="card" ng-if="PersonalDocList == ''">
+      <br>
+      <center>
+      <img ng-src="img/sad.png">
+      <p style="color:#D80027;">You don't have any personal doctor yet!</p>
+    </div>
+
+
+
+   <div ng-if="spec" class="list" ng-repeat="Drl in PersonalDocList | filter:{name:SearchName}
+             | filter:{speciality:SortId}" style="border: 1px solid white;margin-top: -2px;margin: 17px -1px;">
+          <div class="item item-thumbnail-left" style="background-color: transparent; border-color: transparent;min-height: 80px;" >
+
+          <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 60px;width: 60px;border-radius: 50px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+
+
+          <span style="color: white;">{{Drl.name}}</span>
+         
+          <span style="float:right;">
+          <i class="ion-ios-videocam" style="font-size: 25px;color: white" ng-click="VideoChat(Drl.doc_id, Drl.name,Drl.IsAvailable,Drl.email)"></i>&nbsp;&nbsp;&nbsp;
+           <i class="ion-ios-email" style="font-size: 25px;color: white" ng-click="openEmail(Drl.doc_id, Drl.email)" ></i>&nbsp;&nbsp;&nbsp;    
+          <a href="tel:{{Drl.emer_contact}}" class="icon ion-android-call" style="font-size: 25px;color: white" ></a>&nbsp;&nbsp;&nbsp;             
+          <!-- <i  class="icon ion-android-call" style="font-size: 25px;color: white" ng-click="call(Drl.off_address)"></i>&nbsp;&nbsp;&nbsp; -->
+          <i class="ion-ios-location" style="font-size: 25px;color: white" ng-click="goToRoute(Drl.off_address)" transitiontype="slide" direction="left" go-native></i>
+         
+          </span>
+          <p style="color:white;margin-top: 7px;">{{Drl.speciality}}</p>
+          <button class="button button-small" style="background-color: #ffffff;color: #000000;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-weight: 500;border-radius: 25px;font-size: 12px;min-width: 80px;min-height: 24px;font-weight: 500; padding: 0px;"  ng-click="GoToDoctorProfile(Drl.doc_id)">View Profile</button>
+        <!-- <img src="icons/stethoscope.png" style="position: absolute;left: 50px;top: 50px;"> -->
+          </div>
+    </div>      
+    </div>
+
+    
+   <div ng-if="off" class="list" ng-repeat="Drl in PersonalDocList | filter:{name:SearchName} | orderBy:orderCri" style="border: 1px solid white;margin-top: -2px;margin: 17px -1px;">
+          <div class="item item-thumbnail-left" style="background-color: transparent; border-color: transparent;min-height: 80px;" >
+          <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 60px;width: 60px;border-radius: 50px;" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+          <span style="color: white;">{{Drl.name}}</span>
+         
+          <span style="float:right;">
+          <i class="ion-ios-videocam" style="font-size: 25px;color: white" ng-click="VideoChat(Drl.doc_id, Drl.name,Drl.IsAvailable,Drl.email)"></i>&nbsp;&nbsp;&nbsp;
+           <i class="ion-ios-email" style="font-size: 25px;color: white" ng-click="openEmail(Drl.doc_id, Drl.email)" ></i>&nbsp;&nbsp;&nbsp;    
+          <a href="tel:{{Drl.emer_contact}}" class="icon ion-android-call" style="font-size: 25px;color: white" ></a>&nbsp;&nbsp;&nbsp;             
+          <i class="ion-ios-location" style="font-size: 25px;color: white" ng-click="goToRoute(Drl.off_address)" transitiontype="slide" direction="left" go-native></i>
+         
+          </span>
+          <p style="color:white;margin-top: 7px;">{{Drl.speciality}}</p>
+           <button class="button button-small" style="background-color: #ffffff;color: #000000;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-weight: 500;border-radius: 25px;font-size: 12px;min-width: 80px;min-height: 24px;font-weight: 500; padding: 0px;"  ng-click="GoToDoctorProfile(Drl.doc_id)">View Profile</button>
+       
+          </div>
+    </div>
+
+
+    <span ng-show="pagenumber">{{PageNumber}}</span>
+    <ion-infinite-scroll
+    on-infinite="LoadAllPersonalDoctors(PageNumber)"
+    icon="ion-loading-c"
+    distance="5%" immediate-check="false">
+  </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+

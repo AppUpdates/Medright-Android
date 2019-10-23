@@ -1,0 +1,125 @@
+<ion-view view-title="Select Doctor" hide-back-button="true" cache-view="false" ng-init="loadDays()">
+
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    
+     <button class="button button-clear ion-chevron-left" ng-click="GoBacktoappointment()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+
+  <div class="tabs-striped tabs-top tabs-color-light" >
+    <div class="tabs" style="height: 110px;background-color: rgba(158, 153, 153, 0.7490196078431373);padding-top: 37px;border: transparent;">
+      <a class="tab-item" ng-class="{'active' : status == 1}" ng-click="SaveDate1()"> 
+      <p style="font-size: 20px;" ng-class="{'noactive' : status != 1}">{{d1}}</p><p style="margin-top: -30px;" ng-class="{'noactive1' : status != 1}">{{w1}}</p>
+      <p style="margin-top: -34px;" ng-show="a">{{date1}}</p>
+      </a>
+      <a class="tab-item" ng-class="{'active' : status == 2}" ng-click="SaveDate2()">
+      <p style="font-size: 20px;" ng-class="{'noactive' : status != 2}">{{d2}}</p><p style="margin-top: -30px;" ng-class="{'noactive1' : status != 2}">{{w2}}</p><p style="margin-top: -34px;" ng-show="a">{{date2}}</p>
+      </a>
+      <a class="tab-item" ng-class="{'active' : status == 3}" ng-click="SaveDate3()">
+      <p style="font-size: 20px;" ng-class="{'noactive' : status != 3}">{{d3}}</p><p style="margin-top: -30px;" ng-class="{'noactive1' : status != 3}">{{w3}}</p><p style="margin-top: -34px;" ng-show="a">{{date3}}</p>
+      </a>
+       <a class="tab-item" ng-class="{'active' : status == 4}" ng-click="SaveDate4()">
+       <p style="font-size: 20px;" ng-class="{'noactive' : status != 4}">{{d4}}</p><p style="margin-top: -30px;" ng-class="{'noactive1' : status != 4}">{{w4}}</p><p style="margin-top: -34px;" ng-show="a">{{date4}}</p>
+      </a>
+       <a class="tab-item" ng-class="{'active' : status == 5}" ng-click="SaveDate5()">
+       <p style="font-size: 20px;" ng-class="{'noactive' : status != 5}">{{d5}}</p><p style="margin-top: -30px;" ng-class="{'noactive1' : status != 5}">{{w5}}</p><p style="margin-top: -34px;" ng-show="a">{{date5}}</p>
+      </a>
+       <a class="tab-item" ng-class="{'active' : status == 6}" ng-click="SaveDate6()">
+       <p style="font-size: 20px;" ng-class="{'noactive' : status != 6}">{{d6}}</p><p style="margin-top: -30px;" ng-class="{'noactive1' : status != 6}">{{w6}}</p><p style="margin-top: -34px;" ng-show="a">{{date6}}</p>
+      </a>
+    </div>
+  </div>
+
+<br>
+<ion-content class="home-background1">
+<br><br><br><br><br><br><br><br>
+
+
+     <div class="list card" ng-repeat="Drl in PersonalDocList" style="margin-bottom: 0px;margin: 10px;
+     " ng-show="ShowData" id="mydiv">    
+     
+       <a class="item item-avatar" style="background-color: rgba(57, 107, 169, -0.8);border: transparent;">
+          <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+          <h2 style="color: #000000;font-size: 15px;font-weight: 500"><span>  Doctor : {{Drl.name}} {{Drl.lname}}</span></h2>
+          <p style="color: #000000;font-size: 15px;font-weight: 500">{{Drl.speciality}}</p> 
+        
+        </a>
+        <div  style="margin-left: 55px;" ng-if="Drl.avg_rating != null">
+         <rating class="rating-block" ng-model="Drl.avg_rating"  style="pointer-events:none !important;color: #e0e00e;" ></rating>
+  <!--         <ionic-ratings ratingsobj='ratingsObject' style="font-size: 10px;color: #50A0FF" index="x.total"></ionic-ratings> -->
+        </div>
+        <div class="row colums-four" ng-repeat="timeSchedule in Drl.time"  ng-if="$index%4==0">
+        
+
+<!-- 
+          <div class="col cell_l" style="background-color:#50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;" id="id1" 
+ ng-click="Button1(dates)" ng-hide="A1" ng-disable = "i">08:00 AM</div> -->
+
+
+
+
+        <div class="col" style="background-color: #50A0FF;border-radius: 25px;font-size: 12px;margin-left: 13px;
+        margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;"
+         ng-click="GetScheduleData(Drl.id,Drl.doc_id, Drl.profile, Drl.name, Drl.speciality,Drl.off_address,Drl.time[$index],status,date1,date2,date3,date4,date5,date6)">
+
+        {{Drl.time[$index]}}
+        </div>
+
+         <div class="col" style="background-color: #50A0FF;border-radius: 25px;font-size: 12px;margin-left: 13px;
+        margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;"
+         ng-style="{'visibility': !!Drl.time[$index  +1] ? 'visible' : 'hidden'}"
+         ng-click="GetScheduleData(Drl.id,Drl.doc_id, Drl.profile, Drl.name, Drl.speciality,Drl.off_address,Drl.time[$index + 1],status,date1,date2,date3,date4,date5,date6)">
+        {{Drl.time[$index + 1]}}
+        </div>
+
+         <div class="col" style="background-color: #50A0FF;border-radius: 25px;font-size: 12px;margin-left: 13px;
+        margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;"
+         ng-style="{'visibility': !!Drl.time[$index + 2] ? 'visible' : 'hidden'}"
+       ng-click="GetScheduleData(Drl.id,Drl.doc_id, Drl.profile, Drl.name, Drl.speciality,Drl.off_address,Drl.time[$index + 2],status,date1,date2,date3,date4,date5,date6)">
+        {{Drl.time[$index + 2]}}
+        </div>
+
+        <div class="col" style="background-color: #50A0FF;border-radius: 25px;font-size: 12px;margin-left: 13px;
+        margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;"
+        ng-style="{'visibility': !!Drl.time[$index + 3] ? 'visible' : 'hidden'}" ng-click="GetScheduleData(Drl.id,Drl.doc_id, Drl.profile, Drl.name, Drl.speciality,Drl.off_address,Drl.time[$index + 3],status,date1,date2,date3,date4,date5,date6)">
+        {{Drl.time[$index + 3]}}
+        </div> 
+       
+       
+        <br>
+       
+      </div>
+       </div>
+
+  <div class="card" ng-show="NoData">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your personal doctor list is empty!</p>
+  </div>
+
+  <div class="card" ng-show="NoData1">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Currently there are no doctor available in this date!</p>
+  </div>
+
+  <div class="card" ng-show="NoData2">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Currently there are no doctor available in this date!</p>
+  </div>
+
+ <span ng-show="pagenumber">{{PageNumber}}</span>
+  <ion-infinite-scroll
+    on-infinite="LoadMorePersonalDoctors(PageNumber,c)" 
+    icon="ion-loading-c"
+    distance="5%" >
+  </ion-infinite-scroll>
+
+</ion-content>
+</ion-view>
+

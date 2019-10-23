@@ -1,0 +1,66 @@
+<ion-view view-title="My Profile" hide-back-button="true" cache-view="false" ng-init="loadDoctorProfile()">
+
+<ion-nav-bar class="bar-stable"></ion-nav-bar>
+<ion-nav-buttons side="left">
+   <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+  </ion-nav-buttons>
+<ion-nav-buttons side="right">
+<button class="button button-icon button-clear ion-edit" ng-click="editDoctorProfile()" transitiontype="slide" direction="left" go-native></button>
+</ion-nav-buttons>
+ 
+ <ion-content>
+
+    <div class="content" style="background: url(../img/DocProfileBack.jpg) no-repeat center center;opacity: 0.7" >
+      <br>
+      <center>
+      <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{UserProfilePic}}" style="border-radius:50%;opacity: 1;width:50px;height:50px;border:1px solid darkslateblue";/>
+      <p style="color:white;font-size: 15px;">{{DoctonName}}</p>
+      </center>
+      <br>
+    </div>  
+
+    <div class="list">
+      <a class="item item-icon-left" style="font-size: 13px;padding-top: 13px;padding-bottom: 10px;">
+       <i ng-class="DoctorGender =='Female' ? 'icon ion-female' : 'icon ion-male'" style="color: #AFB42B"></i>
+        {{DoctorGender}}
+      </a>
+
+      <a class="item item-icon-left" style="font-size: 13px;padding-top: 13px;padding-bottom: 10px;">
+        <img src="img/cake.png" style="margin-left: -43px;margin-top: -12px;margin-bottom: -8px;">
+        <span style="margin-left: 5px">{{DocBirthDay | mydate}}</span>
+      </a>
+
+      <a class="item item-icon-left" ng-click="GoToSocial()" style="font-size: 13px;padding-top: 13px;padding-bottom: 10px;">
+        <i class="icon ion-email" style="color: #FFC107"></i>
+        {{DoctorEmailId}}
+      </a>
+
+      <a class="item item-icon-left item-text-wrap" style="font-size: 13px;padding-top: 13px;padding-bottom: 10px;">
+        <i class="icon ion-home" style="color: #00BCD4"></i>
+        Home: {{DoctorResAdd}}
+      </a>
+      <a class="item item-icon-left item-text-wrap" style="font-size: 13px;padding-top: 13px;padding-bottom: 10px;">
+        <i class="icon ion-home" style="color: #00BCD4"></i>
+        Office: {{DoctorOffAdd}}
+      </a>
+
+      <a class="item item-icon-left"  style="font-size: 13px;padding-top: 13px;padding-bottom: 10px;">
+       <i class="icon ion-android-call" style="color: #1565C0"></i>
+        Personal: {{DoctorMobile}}  
+      </a>
+       <a class="item item-icon-left"  style="font-size: 13px;padding-top: 13px;padding-bottom: 10px;">
+       <i class="icon ion-android-call" style="color: #1565C0"></i>
+        Emergence: {{DoctorEmeMobile}}  
+      </a> 
+    </div>
+
+    <div class="item item-divider" style="color: #1565C0">
+      About
+    </div>
+    <div class="item item-text-wrap" style="padding: 10px;">
+      <p>{{DocAbout}}</p>
+    </div>
+    <br>
+    
+  </ion-content>
+</ion-view>

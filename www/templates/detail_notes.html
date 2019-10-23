@@ -1,0 +1,52 @@
+<ion-view view-title="Progress Notes" hide-back-button="true" cache-view="false" ng-init="GetDetailNotes()">
+
+<ion-content class="home-background1">
+
+    <div style="margin-top: 10px;">
+      <img src="icons/left-arrow.png" style="margin-left: 12px;" ng-click="goBackToNotes()">
+      <center>
+      <p class="HeaderStyle" style="width: 60%">{{MedicalRecords}}</p>
+      </center>
+    </div>
+
+    <div class="list list-inset" ng-repeat="x in DetailNotes" style="background:transparent;">
+      <div id="legalnotice">
+        <div style="padding: 20px;line-height: 33px;">
+          <span style="color: #ffffff;font-size: 19px;">Patient name</span>
+          <p style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 5px;font-weight: 500">{{FName}} {{LName}}</p>
+          <br>
+
+           <span style="color: #ffffff;font-size: 19px;">Date of visit</span>
+          <p style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 5px;font-weight: 500">{{date}}</p>
+          <br>  
+
+          <span style="color: #ffffff;font-size: 19px;" ng-if="x.visit_type != ''">Visit type</span>
+          <p style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 5px;font-weight: 500" ng-if="x.visit_type != ''">{{x.visit_type}}</p>
+          
+          <span ng-if="x.TestName != ''" style="color: #ffffff;font-size: 19px;">Test</span>
+          <p  style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 5px;font-weight: 500" ng-if="x.TestName != ''">{{x.TestName}}</p>    
+          <br>
+
+           <span style="color: #ffffff;font-size: 19px;">Notes</span>
+          <p  style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 5px;font-weight: 500">{{x.Notes}}</p>    
+          <br>
+          
+          <span ng-if="MedicalRecords == 'Clinical Notes'" style="color: #ffffff;font-size: 19px;">Physician </span>
+          <p  style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 5px;font-weight: 500" ng-if="MedicalRecords == 'Clinical Notes'">{{x.name}}{{x.lname}}</p>
+          
+          <span style="color: #ffffff;font-size: 19px;" ng-if="MedicalRecords == 'Lab Results'">Ordered By </span>
+          <p  style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 5px;font-weight: 500" ng-if="MedicalRecords == 'Lab Results'">{{x.name}}{{x.lname}}</p>         
+       </div>
+      </div>
+      <br>
+      <center>
+      <div class="button-bar padding">
+        <a class="button button-full ButtonStyle"  style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-weight: 500" id="imageURI" ng-click="Print(MedicalRecords,FName,LName,x.visit_type,date,x.TestName,x.name,x.lname,x.Notes)">Print</a>
+       
+      </div>
+      <br>
+      </center> 
+    </div>
+  </ion-content>
+</ion-view>
+

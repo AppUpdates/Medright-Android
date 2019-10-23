@@ -1,0 +1,48 @@
+<ion-view view-title="Medications" hide-back-button="true" cache-view="false" ng-init="GetDoctorMedication()"  hide-nav-bar="true">
+
+<ion-content class="home-background1">
+
+   <div style="margin-top: 10px;">
+      <img src="icons/left-arrow.png" style="margin-left: 12px;" ng-click="GoBack()" transitiontype="slide" direction="right" go-native>
+      <center>
+      <p class="HeaderStyle">Medications</p>
+      </center>
+   </div>
+
+
+    <br>
+     <div class="item item-avatar" ng-repeat="x in DoctorMedicationList" style="background-color: transparent; margin-top: -6px;border: 1px solid #ddd;" ng-show="WithData">
+          <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/userprofile/{{x.profile}}" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+           <button class="button button-small "  style="float: right; padding-top: 0px; padding-bottom: 0px;background-color: #ffffff;color: #000000;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-weight: 500;border-radius: 25px;    font-size: 14px;
+    min-width: 70px;" ng-click="DissmissMedication(x.MedicationId)">
+          Dismiss
+          </button>
+          <h2><span style="color: #ffffff">Patient : </span><span style="color: #000000">{{x.FirstName}} {{x.LastName}}</span></h2>
+          <p><span style="color: #ffffff">Medication Name :</span><span style="color: #000000"> {{x.Medication_Name}}</span></p> 
+          <p><span style="color: #ffffff">Dosage : </span><span style="color: #000000">{{x.Dosage}}</span></p>   
+          <p><span style="color: #ffffff">Frequency : </span><span style="color: #000000">{{x.Frequency}}</span></p>     
+           <p style="word-break: keep-all;text-align: justify;white-space: initial;color: #ffffff">{{x.DateDay}} </p>       
+     </div>
+
+
+
+  
+  <div class="card" ng-show="NoData">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your Medication list is empty!</p>
+  </div>
+
+ <span ng-show="pagenumber">{{PageNumber}}</span>
+  <ion-infinite-scroll
+    on-infinite="LoadMoreDoctorMedication(PageNumber)"
+    icon="ion-loading-c"
+    distance="5%"
+    ng-if="has_more_DoctorMedicationList"
+    immediate-check="false">
+  </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>
+

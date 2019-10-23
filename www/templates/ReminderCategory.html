@@ -1,0 +1,27 @@
+<ion-view view-title="Categories" hide-back-button="true" cache-view="false" ng-init="loadReminderCat()">
+  <ion-nav-bar class="bar-stable"  align-title="center"></ion-nav-bar>
+    <ion-nav-buttons side="left">
+     <button class="button button-clear ion-chevron-left" ng-click="GoBack()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>    
+     </button>
+    </ion-nav-buttons> 
+
+  <ion-nav-buttons side="right">
+    <i class="ion-arrow-down-c" ng-click="goToShowRem()" style="float: right;color: #50A0FF; width:31px; font-size: 25px;margin-top: 5px;" transitiontype="slide" direction="left" go-native></i>
+  </ion-nav-buttons>
+
+
+  <ion-content class="home-background1" scroll="false">
+
+  <center><h3 style="margin-top: 40px;color: #ffffff;" ng-show="ReminderList == ''">No Data Found!</h3></center>
+
+  <div class="card" ng-repeat="rem in ReminderList" ng-class="{'margin': $index == 0,'margin1': $index > 0}">
+  <div class="item item-text-wrap" style="border-color: transparent;background-color:#50A0FF; color:#FFFFFF;padding: 28px 12px;"  ng-click="goToReminder(rem.ReminderId)" transitiontype="slide" direction="left" go-native>
+
+  &nbsp;&nbsp;<span style="font-size: 18px;margin-top: 10px;margin-left: 15px;">{{rem.ReminderName}}</span>
+  <img src="http://68.183.101.193/android/338/uploads/{{rem.icon}}" style="float: left;margin-top: -15px;">
+  </div>
+</div>
+
+</ion-content> 
+</ion-view>
+

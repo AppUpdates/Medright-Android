@@ -1,0 +1,35 @@
+<ion-view view-title="Rate Doctor" cache-view="false" ng-init="GetUserReview()">
+<ion-nav-bar class="bar-stable">          
+</ion-nav-bar>
+
+<ion-nav-buttons side="left">
+    
+          <button class="button button-clear ion-chevron-left" style="font-size: 25px;" ng-click="GoBack()" transitiontype="slide" direction="right" go-native>
+          </button>
+  
+</ion-nav-buttons>
+
+<ion-content padding="true">
+<form ng-submit="SaveReview(Comment)">
+<br>
+
+ <center><img src="http://68.183.101.193/mvc/dhaug2017_338/upload/userprofile/{{ProfilePic}}" id="ProfilePic" style="border-radius:50%;" width="60"; height="60";></center>
+
+      <label class="item item-input" style="margin: 10px;border: 1px solid #0d3250;margin-bottom: -16px;">
+           <textarea  class="placeholder" type="text" placeholder="Write Review" style="color: #606067;" ng-model="Comment">
+           </textarea>
+      </label>
+      <br>
+    <ionic-ratings ratingsobj='ratingsObject' style="font-size: 10px;color: #50A0FF" index="x.total"></ionic-ratings>
+
+<br><br>
+<button class="button button-positive"  style="background-color: #50A0FF; width:94%; color:#f8f8f8;margin-left: 10px;border-radius: 25px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-size: 17px;font-weight: 400">
+SUBMIT
+</button>
+</form>
+
+
+  </ion-content>
+ 
+</ion-view>
+

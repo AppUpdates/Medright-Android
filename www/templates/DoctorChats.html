@@ -1,0 +1,48 @@
+<ion-view view-title="See a Patient" hide-back-button="true" cache-view="false" ng-init="loadPatients()"  hide-nav-bar = "true">
+  <ion-nav-bar class="bar-custom1"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" style="color: black" ng-click="openMenu()"></button>
+  </ion-nav-buttons>
+  
+  <ion-content class="home-background1">
+  <div class="bar bar-header" style="background: transparent;border-width: 0px;">
+  <button class="button button-icon icon ion-navicon" style="color: #000000;" ng-click="openMenu()"></button>
+  <div class="h1 title" style="color: #000000;font-weight: 400;letter-spacing: 0.5px;font-weight: 500;">Chat List</div>
+ 
+</div>
+
+    <div class="div-bg-image" style="padding:5px;">
+
+      <label class="item item-input1 icon item-icon-right" style="margin-right: 2px;margin-left: 2px;margin-top: 47px;">
+      <i class="icon ion-search placeholder-icon" style="font-size: 16px;color: #444;margin-right: -15px;"></i>
+      <input type="text" placeholder="Search by Name" style="color: #606067;" ng-model="SearchName">
+      </label>
+
+    </div>
+
+    <center>
+      <button class="button button-small" style="height: 43px;border-radius: 25px;background: #50A0FF;color: #fff;font-size: 17px;margin-top: -19px;border: 2px solid white;width: 45px;"><i class="ion-chevron-down" style="color:white"></i></button>
+    </center><br>
+     
+    <div class="card" ng-show="PatientList == ''">
+      <br>
+      <center>
+      <img ng-src="img/sad.png">
+      <p style="color:#D80027;">Currently there are no Patient in your list!</p>
+    </div>
+
+    <div ng-if="spec" class="list" ng-repeat="x in PatientList | filter:{FirstName:SearchName}" style="border: 1px solid white;margin-top: -2px;margin: 17px -1px;">
+          <div class="item item-thumbnail-left" style="background-color: transparent; border-color: transparent;min-height: 67px;" >
+          <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/userprofile/{{x.profile}}" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 40px;width: 40px;border-radius: 50px;">
+           <i class="ion-chatbubble" style="font-size: 25px;color: white;float: right;margin-top: 9px;" ng-click="OpenChatRoom(x.UserId,x.FirstName,x.LastName)" transitiontype="slide" direction="left" go-native></i>
+          <p style="color: white;margin-top: 9px;margin-left: -34px;font-size: 17px;">{{x.FirstName}} {{x.LastName}}</p>
+          
+                      
+         
+                  
+          </div>
+    </div>
+      
+  </ion-content>
+</ion-view>
+

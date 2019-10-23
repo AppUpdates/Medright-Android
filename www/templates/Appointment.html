@@ -1,0 +1,75 @@
+<ion-view view-title="Appointments" hide-back-button="true" cache-view="false" ng-init="getAppointment()">
+
+  <ion-nav-bar class="bar-stable "></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left" ng-click="goBackToMainPAge()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+
+
+   <div class="tabs-striped tabs-top tabs-color-light">
+    <div class="tabs" style="height: 55px;background-color: #fff;padding-top: 6px;">
+      <a class="tab-item active" style="border: 0 solid #50A0FF;"> 
+      <b><p style="font-size: 16px;color: #000">Upcoming</p></b>
+      </a>
+      <a class="tab-item"  ng-click="GoToPatientPastAppointment()">
+       <b><p style="font-size: 16px;color: gray">History</p></b>
+      </a>      
+    </div>
+  </div>
+  
+  <ion-content>
+    <br><br><br>
+  
+ <div class="card"  ng-repeat="x in AppointmentList" ng-show="WithData">
+  <div class="row">
+  <center>
+  <div class="col" style="border-right: 1px solid gray;width: 100%">
+  <span style="font-size: 20px;color: gray;">{{x.AppointmentTime | date: 'MMMM'}}</span><br> 
+  <p style="font-size: 32px;margin-top: 20px;color: #50A0FF"><b>{{x.DateDay}} </b></p>
+  <p style="font-size: 20px;margin-top: 20px;color: gray;">{{x.AppointmentTime | date: 'EEE'}}</p>  
+  </div>
+  </center>
+
+  <div class="col col-75" style="margin-left: 6px;">
+    <p style="color: gray;">Time</p>
+    <p style="font-size: 20px;margin-top: -8px;"><b>{{x.AppointmentDate}}</b></p>
+    <p style="float: right;margin-top: -51px;margin-right: 49px;color: gray;"> Doctor</p>
+    <p style="float: right;margin-top: -32px;font-size: 20px;margin-right: 39px;"><b>{{x.name}}</b></p>
+    <hr>
+    <p style="color: gray;">Appointment Type</p>
+    <p  style="font-size: 20px;margin-top: -8px;width: 130px;"><b>{{x.type}}</b></p>
+
+    <button class="button  button-small" style="background-color: #50A0FF;float: right;width: 35%;color: #fff;font-size: 15px;padding: -1px;margin-top: -40px;margin-right: 24px;border-radius: 25px;" ng-click="openPopover($event,x.AppointmentId, x.sch_id)">options</button>
+  </div>
+</div>  
+</div>
+
+  <div class="card" ng-show="NoData">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your appointment list is empty!</p>
+  </div>
+
+ <span ng-show="pagenumber">{{PageNumber}}</span>
+  <ion-infinite-scroll
+    on-infinite="LoadMoreAppointment(PageNumber)"
+    icon="ion-loading-c"
+    distance="5%"
+     ng-if="has_more_UpcomingAppointment"
+    immediate-check="false">
+  </ion-infinite-scroll>
+ <center>
+    <ion-spinner icon="spiral"  ng-show="ShowSpinner"></ion-spinner>
+    </center>
+
+</ion-content>
+<ion-footer-bar style="background: transparent;">
+           <button class="button button-block" style="border-radius: 25px;background-color: #50A0FF;font-size: 19px;color: #fff;margin-top: -20px;height: 40px;margin-left: 10px;
+    margin-right: 10px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="GoToAddAppointment()" transitiontype="slide" direction="left" go-native>Book New Appointment</button>
+           <br><br>
+</ion-footer-bar>
+
+</ion-view>
+

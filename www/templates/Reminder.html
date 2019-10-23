@@ -1,0 +1,19 @@
+<ion-view view-title="Reminder" cache-view="false" ng-init="loadReminder()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left" ng-click="GoBack()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="home-background1" scroll="false">
+    <center><h3 style="margin-top: 40px;color: #ffffff;" ng-show="ReminderCatList == ''">No Data Found!</h3></center>
+      <div class="card" style="border-color: transparent;" ng-repeat="cat in ReminderCatList" ng-class="{'margin': $index == 0,'margin1': $index > 0}">
+        <div class="item item-text-wrap" style="border-color: transparent;background-color:#50A0FF; color:#FFFFFF;padding: 28px 12px;" ng-click="goToWater(cat.CategoryId,cat.CategoryName)" transitiontype="slide" direction="left" go-native>
+           &nbsp;&nbsp;<span style="font-size: 18px;margin-top: 10px;margin-left: 15px;">{{cat.CategoryName}}</span>
+             <i class="ion-chevron-right" style="float: right;font-size: 20px;color: white;margin-top: 5px;"></i>
+             <img src="http://68.183.101.193/android/338/gif/{{cat.CategoryImage}}" style="float: left;margin-top: -11px;height: 40px;width: 40px;">
+        </div>
+      </div>
+  </ion-content>    
+</ion-view>

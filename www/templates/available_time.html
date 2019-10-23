@@ -1,0 +1,26 @@
+<ion-view view-title="Select Doctor" hide-back-button="true" cache-view="false" ng-init="loadDoctors()">
+
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()">
+    </button>
+  </ion-nav-buttons>
+
+
+<ion-content style="background: linear-gradient(#90CAF9,#0D47A1);">
+   
+
+     <div class="list" ng-repeat="Drl in PersonalDocList" style="margin-bottom: 0px;margin: 10px;">
+      
+        <div class="item item-avatar" ng-click="GoToSchedule(Drl.id, Drl.profile, Drl.name, Drl.speciality)">
+          <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}">
+          <h2><span>Doctor : {{Drl.name}}</span></h2>
+          <p>{{Drl.speciality}}</p>          
+        </div>
+     
+      </div>
+
+
+</ion-content>
+</ion-view>
+

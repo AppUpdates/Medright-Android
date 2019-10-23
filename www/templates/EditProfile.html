@@ -1,0 +1,57 @@
+<ion-view view-title="Edit Profile" cache-view="false" ng-init="loadEditProfile();"  hide-nav-bar = "true">
+
+  <ion-content class="home-background1">
+    <div class="container">
+      <div class="my-container">
+        <div ng-click="GoBackProfile()"><img style="margin-left: 13px;top: 5px;" src="icons/left-arrow-white.png" transitiontype="slide" direction="right" go-native></div>
+        <center>
+        <p style="color: white;margin-top: -15px;font-size: 18px;font-weight: 400;width: 50%">Edit Profile</p>
+        <br>
+
+      <div style="text-align: center;margin-top: 10px;">
+        <label style="font-size: 15px;color: #000000;font-weight: 500;">
+        <b>Tap picture to Edit your profile picture</b></label>
+      </div>
+
+
+        <center>
+        <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/userprofile/{{ProfilePic}}" style="margin-top: 3px;border-radius: 50%" width="93px"; height="93px"; ng-click="SelectPicture1()" id="ProfilePic" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'"/>
+        <p ng-show="pic">{{ProfilePic}}</p>
+        <br><br><br><br>
+        </center>
+      </div>
+    </div> <br>
+
+    <div class="PInfoStyle">
+      <div class="HeadDivStyle">
+      <label class="HeadLabelStyle">Edit your MobileNo</label>
+      </div>
+      <label class="item item-input LabelStyle">
+      <input type="text" class="InputStyle" onKeyPress="if(this.value.length==10) return false;"
+             ng-model="MobileNumber" placeholder="Mobile No.">
+      </label><br>
+
+      <div class="HeadDivStyle">
+      <label class="HeadLabelStyle">Edit your Email</label>
+      </div>
+      <label class="item item-input LabelStyle">
+      <input type="email" placeholder="Email" class="InputStyle" 
+               ng-model="Email">
+      </label><br><br>
+
+      <div class="HeadDivStyle">
+      <label class="HeadLabelStyle">Edit your Address</label>
+      </div>
+      <label class="item item-input LabelStyle">
+      <input type="text" placeholder="Address" class="InputStyle" 
+               ng-model="Address">
+      </label><br><br>
+
+
+      <button class="button button-full button-balanced ButtonStyle" ng-click="updateProfile(ProfilePic,MobileNumber,Email, Address)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+        Save
+      </button>
+    </div>
+  </ion-content>
+</ion-view>
+

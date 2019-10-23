@@ -1,0 +1,34 @@
+<ion-view view-title="Edit Reminder" cache-view="false" ng-init="loadEditReminder()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="padding" style="margin-top: -6px;">
+    <center><h4 style="color: orangered;">{{ReminderName}}</h4></center>
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #7d447d;font-weight: 500;">Enter Date</label>
+      </div>
+      <label class="item item-input" style="border: 1px solid green;margin-top: 10px">
+        <input type="date" ng-model="SelectedEditDate" placeholder="Enter Date"/>
+      </label>
+      <div style="text-align: center;margin-top: 12px;">
+        <label style="font-size: 15px;color: #7d447d;font-weight: 500;" >Enter Time</label>
+      </div>
+      <label class="item item-input" style="border: 1px solid green;margin-top: 10px">
+        <input type="time" ng-model="SelectedEditTime" placeholder="Enter Time"/>
+      </label>
+      <label class="item item-input item-select" style="border-color: green;margin-top: 50px">
+        <div class="input-label" style="font-weight: 500;">Repeat&nbsp;</div>
+          <select ng-model="SelectedEditRepeatId"
+                 ng-options="c.Rid as c.Rname for c in RepeatList" required>
+            <option value="">No repeat</option>
+          </select>
+      </label>
+        <button class="button button-full button-balanced"
+                style="margin-top: 30px;" ng-click="UpdateMyReminder(SelectedEditDate,SelectedEditTime,SelectedEditRepeatId)">
+          Update
+        </button>
+  </ion-content>
+</ion-view>
+

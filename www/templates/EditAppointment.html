@@ -1,0 +1,43 @@
+<ion-view view-title="Edit Appointment" cache-view="false" ng-init="GetEditAppointment()">
+<ion-nav-bar class="bar-stable"></ion-nav-bar>
+<ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()">
+    </button>
+</ion-nav-buttons>
+
+  <ion-content>
+    <div style="margin-top: 10px;" class="list">
+      <div style="text-align: center;">
+        <label style="font-size: 15px;color: #7d447d;font-weight: 500;">Enter Appointment date</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;border-color: #7d447d;">
+        <input type="Date" style="color: #606067;"
+               ng-model="EditAppointDate" min="today">
+      </label><br/>
+
+      <label class="item item-input item-select" style="margin: 10px;border-color: #7d447d;">
+        <div class="input-label ConfigurationFontSize" style="font-weight: 500;">Doctors&nbsp;</div>
+        <select ng-model="SelectedEditDoctorId"
+                ng-options="c.doc_id as c.name for c in DoctorsList"
+                ng-change="doctorChanged(SelectedDoctorId)">
+          <option value="">Select Doctor</option>
+        </select>
+      </label>
+
+      <div style="text-align: center;margin-top: 30px;">
+        <label style="font-size: 15px;color: #7d447d;font-weight: 500;">I want to be seen for</label>
+      </div>
+      <label class="item item-input" style="margin: 10px;border-color: #7d447d;">
+        <textarea placeholder="Message" rows="5" cols="50" ng-model="EditAppointMessage"></textarea>
+      </label>
+
+      <div class="button-bar">
+        <button class="button button-full button-balanced"
+                style="margin: 10px;" ng-click="editAppointment(EditAppointDate,SelectedEditDoctorId,EditAppointMessage)">
+          Update
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

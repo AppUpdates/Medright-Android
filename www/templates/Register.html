@@ -1,0 +1,218 @@
+<ion-view view-title="Join Today" ng-init="loadRegister()"  hide-back-button="true" cache-view="false">
+
+  <ion-content class="home-background1">
+    <div>
+      <img src="icons/left-arrow.png" ng-show="PersonalInfo"  style="margin-left: 12px;margin-top: 10px;" ng-click="GoBack()" transitiontype="slide" direction="right" go-native>
+      <img src="icons/left-arrow.png"  ng-show="PersonalInfo1" style="margin-left: 12px;margin-top: 10px;" ng-click="goBack1()" transitiontype="slide" direction="right" go-native>
+      <img src="icons/left-arrow.png" ng-show="Contactinfo" style="margin-left: 12px;margin-top: 10px;" ng-click="goBack2()" transitiontype="slide" direction="right" go-native>
+      <img src="icons/left-arrow.png"  ng-if="SubscriptionInfo" style="margin-left: 12px;margin-top: 10px;" ng-click="goBack3()" transitiontype="slide" direction="right" go-native>
+      <img src="icons/left-arrow.png" ng-if="Paymentinfo" style="margin-left: 12px;margin-top: 10px;" ng-click="goBack4()" transitiontype="slide" direction="right" go-native>
+      <center>
+      <p class="HeaderStyle">Join Today</p>
+      </center><br>
+    </div>
+    <div ng-show="PersonalInfo" class="PInfoStyle">
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">First name</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <input type="text" class="InputStyle" ng-model="FirstName" style="color: #ffffff;">
+      </label><br>
+
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Last name</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <input type="text" class="InputStyle" ng-model="LastName" style="color: #ffffff;">
+      </label><br/>
+
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Email</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <input type="email" class="InputStyle" ng-model="Email" style="color: #ffffff;">
+      </label><br/>
+
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Phone number</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <input type="number" class="InputStyle"  ng-model="MobileNumber" id="phone" style="color: #ffffff;">
+      </label><br/>
+
+      <ion-checkbox ng-model="MailCheck" class="item-text-wrap CheckStyle">
+        <span class="SpanStyle">Keep me up to date on all the latest MedRight Healthcare office openings, services, and offers.</span>
+      </ion-checkbox>
+
+
+       <ion-checkbox ng-model="FingerPrint" class="item-text-wrap CheckStyle" ng-change=CheckFingerPrintAvailability(FingerPrint)>
+        <span class="SpanStyle">Enable FingerPrint</span>
+      </ion-checkbox><br>
+
+      <!-- <div class="button-bar"> -->
+        <button class="button button-block ButtonStyle" ng-click="goNextOne(FirstName,LastName,Email,MailCheck,MobileNumber)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Next
+        </button>
+      <!-- </div> -->
+    </div>
+<!-- ng-show="PersonalInfo1" -->
+    <div  class="PInfoStyle" ng-show="PersonalInfo1">
+     <!--  <div style="text-align: center;margin-top: 15px;">
+        <label style="font-size: 15px;color: #7d447d;font-weight: 500;">Upload your profile picture</label>
+      </div>
+      <div style="text-align: center;margin-top: 10px;">
+        <img src="http://imdhrup.com/android/338/uploads/{{ProfilePic}}" id="ProfilePic" ng-click="SelectPicture()"
+        style="border-radius: 50px;height: 70px;width: 70px;">
+      </div> -->     
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Birth date</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <input type="text" class="InputStyle" ng-model="BirthDate" ng-click="openDatePicker()" readonly="" style="background-color: transparent;color: #ffffff;">
+         <input type="text" class="InputStyle" ng-model="BirthDate1" readonly="" style="background-color: transparent;" ng-show="picker">
+      </label><br/>
+
+
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Password</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <input type="password" class="InputStyle" ng-model="Password" style="color: #ffffff;">
+      </label><br>
+      
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Gender</label>
+      </div>
+      <div class="button-bar LabelStyle">
+        <ion-radio ng-value="value1" ng-model="CheckMale" ng-click="changedRadioValue('value1')" style="width:50%;background: transparent;">
+          Male
+        </ion-radio>
+        <ion-radio ng-value="value2" ng-model="CheckFemale" ng-click="changedRadioValue('value2')" style="width:51%;background: transparent;">
+          Female
+        </ion-radio>
+      </div><br><br><br>
+
+      <div class="button-bar">
+        <button class="button button-full button-balanced ButtonStyle2" ng-click="goBack1()" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Back
+        </button>
+        <button class="button button-full button-balanced ButtonStyle1" ng-click="goNextOne1(BirthDate,Password)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Next
+        </button>
+      </div>
+    </div>
+<!-- ng-show="Contactinfo" -->
+    <div  class="PInfoStyle" ng-show="Contactinfo">
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Adrress Line1</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <textarea rows="3" cols="50" class="InputStyle" ng-model="Address1" style="color: #ffffff;"></textarea>
+      </label><br>
+      
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">Adrress Line2</label>
+      </div>
+      <label class="item item-input LabelStyle">
+        <textarea rows="3" cols="50" class="InputStyle" ng-model="Address2" style="color: #ffffff;"> </textarea>
+      </label><br>
+      
+      <div class="HeadDivStyle">
+        <label class="HeadLabelStyle">City</label>
+      </div>
+      <label class="item item-input item-select" style="margin-top: 3px;border:1.5px solid white;border-radius: 5px;">
+        <div class="input-label" style="font-weight: 500;">City&nbsp;</div>
+        <select ng-model="SelectedCityId" 
+                ng-options="c.id as c.name for c in CityList"
+                ng-change="cityChanged(SelectedCityId)" style="background:transparent;">
+                <option value=""> Select City </option>
+        </select>
+      </label><br/>
+      <ion-checkbox ng-model="PrivacyPolicy" class="item-text-wrap CheckStyle" style="text-align: justify;">
+        <span class="SpanStyle">I am at least 18 years of age, and I have read and accept The Medright's Terms of Service, HIPAA Policy, and Privacy Policy</span>
+      </ion-checkbox><br>
+      <br><br><br>
+
+      <div class="button-bar">
+        <button class="button button-full button-balanced ButtonStyle2" ng-click="goBack2()" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Back
+        </button>
+        <button class="button button-full button-balanced ButtonStyle1" ng-click="goToNextTwo(Address1,Address2,SelectedCityId,PrivacyPolicy)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Next
+        </button>
+      </div>
+    </div>
+<!-- ng-if="SubscriptionInfo"  -->
+  <div  class="PInfoStyle" ng-if="SubscriptionInfo"> 
+      <div class="padding" style="border: 1.5px solid white;border-radius: 25px;" ng-repeat="x in subscription"  ng-class="{top: $index > 0,color1: $index == 0,color2: $index == 1,color3: $index == 2}" ng-click="selectMemberShip(x.amount,x.name,x.id,x.currency)">
+<!--       <div class="row">
+        <div class="col" style="color: white;font-size: 25px;font-weight: 600;line-height: 24px;">{{x.name}}</div>
+        <div class="col col-33" style="color: white;font-size: 25px;font-weight: 600">${{x.amount}}/{{x.custom_duration}}</div>
+      
+      </div> -->
+         <div  style="color: white;font-size: 25px;font-weight: 600;line-height: 24px;">{{x.currency}} {{x.amount}}/{{x.custom_duration}}</div>
+  <div style="color: white;font-size: 18px;margin-top:11px;">{{x.name}}</div><br>
+     <!--  <p style="color: white;font-size: 25px;font-weight: 600">{{x.name}}<span style="float: right;">${{x.amount}}</span></p> -->
+     <ul data-ng-bind-html="x.content"  style="word-break: keep-all;white-space: initial; text-align: justify;color: #ffffff;margin-left: 16px;">
+     
+     
+     </ul>
+     <!--  <div style="word-break: keep-all;white-space: initial; text-align: justify;color: #ffffff" data-ng-bind-html="x.content" class="rendered-quill-content ql-editor">         
+
+
+      </div> -->
+    </div>
+     <div class="button-bar">
+        <button class="button button-full button-balanced ButtonStyle2" ng-click="goBack3()" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Back
+        </button>
+  </div>
+</div>
+
+    <div ng-if="Paymentinfo" class="PInfoStyle">
+      <div class="padding" style="border: 1.5px solid white;border-radius: 7px;">
+       <!--  <button class="button button-full" id="customButton" style="color:orangered;border: 1px solid green;" ng-click="goToPay(1)">
+          Stripe
+        </button> -->
+
+        <p style="color: white;font-size: 16px">Annual Membership <span style="float: right;">{{currency}} {{amount}}</span></p>
+         <p style="color: white;font-size: 16px">Your membership is valid until {{membership_date}}</p>
+
+         
+      </div><br>
+      <div class="wrapper">
+      <input placeholder="Enter promo code" ng-model="promocode"  style="border: none;height: 40px;width: 80%;border-radius: 5px;" />
+      <button style=" float: right;height: 40px;border: none;background: #fff;border-radius: 5px;" ng-click="ApplyCode(promocode,amount)">Apply</button>
+      </div>
+      <br>
+      <p ng-show="ShowDicountPrice" style="color: white;font-size: 16px"> Your total amount to pay is <span>GHS {{dicountprice}}</span></p>
+
+      <br>
+       <button class="button button-full ButtonStyle" ng-click="payWithHubtel(amount)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Pay with Hubtel & Join
+        </button>
+         <!--  <button class="button button-full ButtonStyle" ng-click="payWithHubtel(MobileNumber,BirthDate1,Password,FirstName,LastName,
+                Email,MailCheck,Address1,Address2,SelectedCityId,amount)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+         Pay with Mobile Money & Join
+        </button>
+        -->
+      <button class="button button-full ButtonStyle" ng-click="goToPay(2, MobileNumber,BirthDate1,Password,FirstName,LastName,
+                Email,MailCheck,Address1,Address2,SelectedCityId,amount,dicountprice)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Pay with PayPal & Join
+        </button>
+
+         <button class="button button-full ButtonStyle" ng-click="cashPayment(MobileNumber,BirthDate1,Password,FirstName,LastName,
+                Email,MailCheck,Address1,Address2,SelectedCityId,amount,dicountprice)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Pay with Cash & Join
+      </button>
+
+          <button class="button button-full ButtonStyle" ng-click="goBack4(Address1,Address2,SelectedCityId)" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);">
+          Back
+        </button>
+         
+    </div>
+
+
+  </ion-content>
+</ion-view>
+

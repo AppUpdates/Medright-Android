@@ -1,0 +1,266 @@
+<ion-view view-title="" hide-back-button="true" cache-view="false">
+  <ion-nav-bar class="bar-stable"  align-title="center"></ion-nav-bar>
+    <ion-nav-buttons side="left">
+     <button class="button button-clear ion-close" ng-click="GoBacktoHome()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>    
+     </button>
+    </ion-nav-buttons> 
+
+  <ion-content padding="true">
+   
+   <center>
+   <h4>HEALTH HISTORY QUESTIONNARIE</h4>
+   </center>
+   <p class="history-info-text">We ask you for information about your general health to help us treat you safely and better. Please write your contact details
+below, answer the health questions inside then sign the form on the back page. We will use this form at later visits to discuss any
+change in your general health. All information will be kept strictly confidential by the people caring for you.</p>
+
+ <div class="item item-divider">
+    GENERAL INFO
+  </div>
+
+<label class="item item-input item-stacked-label history-label-border">
+    <span class="input-label history-span-color" style="display: list-item;">Name</span>
+    <input type="text" placeholder="John" ng-model="historyData.name">
+</label>
+
+<label class="item item-input item-select history-label-border">
+    <div class="input-label history-span-color" style="display: list-item;">
+      Gender
+    </div>
+    <select ng-model="historyData.gender">
+     <option value="" disabled selected>Select</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">DOB</span>
+   <input type="date" placeholder="John" ng-model="historyData.dob" value="{{historyData.dob}}">
+</label>
+
+<label class="item item-input item-select history-label-border">
+    <div class="input-label history-span-color" style="display: list-item;">
+      Marital Status
+    </div>
+    <select ng-model="historyData.merital_status">
+     <option value="" disabled selected>Select</option>
+      <option>Single</option>
+      <option>Married</option>
+      <option>Divorced</option>
+      <option>Widowed</option>
+    </select>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+    <span class="input-label history-span-color" style="display: list-item;">Previous or referring doctor</span>
+    <input type="text" placeholder="Enter doctor name here" ng-model="historyData.ref_doctor">
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Date of last physical exam</span>
+   <input type="date" ng-model="historyData.date_of_exam">
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Emergency contact</span>
+   <input type="tel" placeholder="Set your emergency contact no." ng-model="historyData.emergency_phone">
+</label>
+
+ <div class="item item-divider">
+    PERSONAL HEALTH HISTORY
+  </div>
+
+
+<label class="item item-input item-select history-label-border">
+  <div class="input-label history-span-color" style="display: list-item;">
+    Childhood illness
+  </div>
+  <select ng-model="historyData.childhood_illness">
+   <option value="" disabled selected>Select</option>
+    <option>Measles</option>
+    <option>Mumps</option>
+    <option>Rubella</option>
+    <option>Chickenpox</option>
+    <option>Rheumatic Fever</option>
+    <option>Polio</option>
+  </select>
+</label>
+ 
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color" style="display: list-item;">Surgeries
+    </span>
+    <input type="text" placeholder="Year" ng-model="historyData.surgerie_year" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-input item-stacked-label">
+<input type="text" placeholder="Reason" ng-model="historyData.surgerie_reason" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-input item-stacked-label">
+<input type="text" placeholder="Name of the Hospital" ng-model="historyData.surgerie_hospital" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-stacked-label history-last-labels" ng-show="History1" ng-click="viewList(1)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons"> View previous {{SurgeryCounter}}</i>
+</label>
+
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color" style="display: list-item;">Other hospitalizations
+    </span>
+    <input type="text" placeholder="Year" ng-model="historyData.hospitalizations_year" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-input item-stacked-label">
+<input type="text" placeholder="Reason" ng-model="historyData.hospitalizations_reason" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-input item-stacked-label">
+<input type="text" placeholder="Name of the Hospital" ng-model="historyData.hospitalizations_hospital" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-stacked-label history-last-labels" ng-if="History2" ng-click="viewList(2)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons"> View previous {{HopitalizationCounter}}</i>
+</label>
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color history-long-label" style="display: list-item;">List your prescribed drugs and over-the-counter drugs, such as vitamins and inhalers
+    </span>
+    <input type="text" placeholder="Name the Drug" ng-model="historyData.drug_name" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-input item-stacked-label">
+<input type="text" placeholder="Frequency Taken" ng-model="historyData.drug_frequency" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-stacked-label history-last-labels" ng-if="History3" ng-click="viewList(3)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons"> View previous {{DrugsCounter}}</i>
+</label>
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color history-long-label" style="display: list-item;">Allergies to medications
+    </span>
+    <input type="text" placeholder="Name the Drug" ng-model="historyData.drug_name_allergies" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-input item-stacked-label">
+<input type="text" placeholder="Reaction You Had" ng-model="historyData.drug_reaction" style="border-bottom: 1px solid #ddd;">
+</label>
+
+<label class="item item-stacked-label history-last-labels" ng-if="History4" ng-click="viewList(4)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons"> View previous {{AllergiesCounter}}</i>
+</label>
+
+
+
+<div class="item item-divider">
+    HEALTH HABITS AND PERSONAL SAFETY
+</div>
+
+<p class="history-info-security-text">ALL QUESTIONS CONTAINED IN THIS QUESTIONNAIRE ARE OPTIONAL AND WILL BE KEPT STRICTLY CONFIDENTIAL.</p>
+
+<p class="history-span-color history-exercise-label">
+    Exercise
+</p>
+
+<label class="item item-input item-select history-label-border">
+  <div class="input-label" style="display: list-item;">
+    Do you excercise?
+  </div>
+  <select ng-model="historyData.excercise" ng-change="checkExcercise()">
+    <option value="" disabled selected>Select</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border" ng-show="showExcerciseDesc">
+   <span class="input-label" style="display: list-item;">If Yes, how often?</span>
+   <ion-checkbox ng-model="historyData.occasionally" ng-change="ExerciseItemUncheck1()" class="item-text-wrap CheckStyle history-checkbox">
+        <span>Occasionally</span>
+   </ion-checkbox><br>
+      <ion-checkbox ng-model="historyData.regularly" ng-change="ExerciseItemUncheck2()" class="item-text-wrap CheckStyle history-checkbox">
+        <span>Regularly</span>
+   </ion-checkbox><br>
+</label>
+
+<br>
+
+<p class="history-span-color history-exercise-label">
+    Alcohol
+</p>
+
+<label class="item item-input item-select history-label-border">
+  <div class="input-label" style="display: list-item;">
+    Do you drink alcohol?
+  </div>
+  <select ng-model="historyData.alcohol">
+    <option value="" disabled selected>Select</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">How many drinks per week?</span>
+   <input type="text" placeholder="Enter no. of drinks" ng-model="historyData.no_of_drinks">
+</label>
+
+<br>
+
+<p class="history-span-color history-exercise-label">
+    Tobacco
+</p>
+
+<label class="item item-input item-select history-label-border">
+  <div class="input-label" style="display: list-item;">
+    Do you use tobacco?
+  </div>
+  <select ng-model="historyData.tobacco">
+   <option value="" disabled selected>Select</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+</label>
+
+<br>
+<p class="history-span-color history-exercise-label">
+    Sex
+</p>
+
+<label class="item item-input item-select history-label-border">
+  <div class="input-label" style="display: list-item;">
+    Are you sexually active?
+  </div>
+  <select ng-model="historyData.sex_active">
+   <option value="" disabled selected>Select</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-long-label" style="display: list-item;">Illness related to the Human Immunodeficiency Virus (HIV), such as AIDS, has
+become a major public health problem. Risk factors for this illness include intravenous
+drug use and unprotected sexual intercourse. Would you like to speak with your
+provider about your risk of this illness?</span>
+   <ion-checkbox ng-model="historyData.hiv_yes" ng-change="ItemUncheck3()" class="item-text-wrap CheckStyle history-checkbox">
+    <span>Yes</span>
+   </ion-checkbox>
+      <ion-checkbox ng-model="historyData.hiv_no" ng-change="ItemUncheck4()" class="item-text-wrap CheckStyle history-checkbox">
+        <span>No</span>
+   </ion-checkbox><br>
+</label>
+
+</ion-content>
+
+<ion-footer-bar style="background: transparent;">
+           <button class="button button-block" style="border-radius:25px;background-color: #50A0FF;font-size: 19px;color: #fff;margin-top: -20px;height: 40px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);margin-left: 10px;margin-right: 10px" ng-click="updateHealthHistory()">Update Health History</button>
+           <br><br>
+</ion-footer-bar>
+
+
+</ion-view>
+

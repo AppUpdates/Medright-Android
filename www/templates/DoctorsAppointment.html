@@ -1,0 +1,97 @@
+<ion-view view-title="Appointments" hide-back-button="true" cache-view="false" ng-init="loadDocupcomingApp()">
+ 
+<ion-nav-bar class="bar-stable"></ion-nav-bar>
+<ion-nav-buttons side="left">
+<button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+</ion-nav-buttons>
+
+<ion-content class="home-background1" >
+ 
+  <div class="card" style="height: 60px; background-color: #50A0FF;    margin-bottom: -20px;
+    margin-top: 15px;margin: -1px;">
+  <p style="font-size: 15px;padding: 9px;color: #fff"> 
+   Your upcoming MedRight Healthcare 
+  </p>
+  
+  <a class="button button-icon  ion-chevron-down" style="color: #fff;float: right;margin-top: -50px;font-size: 22px;margin-right: 5px;" ng-click="ShowAppointmentList()" ng-hide="ShowList"></a>
+  <a class="button button-icon  ion-chevron-up" style="color: #fff;float: right;margin-top: -50px;font-size: 22px;margin-right: 5px;" ng-click="HideAppointmentList()" ng-show="HideList"></a>
+     <p style="font-size: 15px;padding: 9px;color: #fff;margin-top: -32px;">appointment</p>
+  </div>
+
+  <div class="card"  ng-repeat="ap in DocAppList" ng-show="ShowAppointmentList1" 
+  ng-class="{test: $index > 0}" style="background: transparent;margin: 17px -1px;border: 1px solid #ffffff;">
+
+  <div class="row" transitiontype="slide" direction="left" go-native>
+  <div class="col col-33" ng-click="GoToDetailAppointment(ap.AppointmentTime , ap.AppointmentDate, ap.FirstName , ap.LastName , ap.type , ap.Email , ap.UserId , ap.DoctorId)" style="border-right: 2px solid #ffffff;flex: 0 0 36.3333%;max-width: 36.3333%;">
+  <span style="font-size: 30px;color: #ffffff">{{ap.AppointmentTime  | dateSuffix}}</span><br> 
+  <span style="font-size: 16px;float: right;margin-top: -25px;margin-right: 2px;color: #ffffff">{{ap.AppointmentTime | date: 'EEE' | uppercase}} </span>
+  <span style="font-size: 16px;float: left;margin-right: 4px;color: #ffffff">{{ap.AppointmentTime | date: 'MMMM' | uppercase }}</span><br>
+  <span class="badge" style="background-color: #ffffff;color: #000000;float: left;margin-top: 5px;">{{ap.AppointmentDate | date: 'EEEE'}}</span>
+  </div>
+  <div class="col col-67">
+  <p style="color: #ffffff;" ng-click="GoToDetailAppointment(ap.AppointmentTime , ap.AppointmentDate, ap.FirstName , ap.LastName , ap.type , ap.Email , ap.UserId , ap.DoctorId)">{{ap.FirstName}} {{ap.LastName}}</p>
+  <p style="color: #ffffff;" ng-click="GoToDetailAppointment(ap.AppointmentTime , ap.AppointmentDate, ap.FirstName , ap.LastName , ap.type , ap.Email , ap.UserId , ap.DoctorId)">{{ap.type}}</p>
+  <a class="button button-icon  ion-chevron-right" style="color: #ffffff;float: right;margin-top: -50px;font-size: 22px;margin-right: 20px;" ng-click="GoToDetailAppointment(ap.AppointmentTime , ap.AppointmentDate, ap.FirstName , ap.LastName , ap.type , ap.Email , ap.UserId , ap.DoctorId)" transitiontype="slide" direction="left" go-native></a>
+
+  <button class="button button-small" style="color: #191919;background-color: #ffffff;padding-right: 15px;padding-left: 15px;font-size: 14px; border-radius: 19px!important;font-weight: 600!important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="callPatient(ap.Contact)">
+  <b>call back</b>
+</button>
+  </div>
+
+  </div>  
+  </div>
+
+ <div class="card" ng-show="NoData1">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your appointment list is empty!</p>
+  </center>
+ </div>
+
+  <div class="card" style="height: 60px; background-color: #50A0FF;margin-bottom: -20px;margin-top: 38px;margin: 17px -1px;">
+  <p style="font-size: 15px;padding: 17px;color: #fff;margin-left: -7px;"> 
+    View your past appointments
+  </p>
+  <a class="button button-icon  ion-chevron-down" style="color: #fff;float: right;margin-top: -59px;font-size: 22px;margin-right: 5px;" ng-click="ShowPastAppointmentList()" ng-hide="ShowPastList"></a>
+  <a class="button button-icon  ion-chevron-up" style="color: #fff;float: right;margin-top: -59px;
+    font-size: 22px;margin-right: 5px;" ng-click="HidePastAppointmentList()" ng-show="HidePastList"></a>
+  </div>
+
+
+  <div class="card" ng-repeat="x in DocPastAppList" ng-show="ShowPastAppointmentList1" 
+  ng-class="{test: $index > 0}" style="background: transparent;margin: 17px -1px;border: 1px solid #ffffff;">
+
+  <div class="row"  transitiontype="slide" direction="left" go-native>
+  <div class="col col-33" ng-click="GoToPastDetailAppointment(x.AppointmentTime , x.AppointmentDate, x.FirstName , x.LastName , x.type , x.Email , x.UserId , x.DoctorId)" style="border-right: 2px solid #ffffff;flex: 0 0 36.3333%;max-width: 36.3333%;">
+  <span style="font-size: 30px;color: #ffffff">{{x.AppointmentTime | dateSuffix}}</span><br> 
+  <span style="font-size: 16px;float: right;margin-top: -25px;margin-right: 2px;color: #ffffff">{{x.AppointmentTime | date: 'EEE' | uppercase}} </span>
+  <span style="font-size: 16px;margin-right: 4px;color: #ffffff;float: left;">{{x.AppointmentTime | date: 'MMMM' | uppercase}}</span><br>
+  <span class="badge" style="background-color: #ffffff;color: #000000;float: left;margin-top: 5px;">{{x.AppointmentDate | date: 'EEEE'}}</span>
+  </div>
+  <div class="col col-67">
+  <p style="color: #ffffff" ng-click="GoToPastDetailAppointment(x.AppointmentTime , x.AppointmentDate, x.FirstName , x.LastName , x.type , x.Email , x.UserId , x.DoctorId)">{{x.FirstName}} {{x.LastName}}</p>
+  <p style="color: #ffffff" ng-click="GoToPastDetailAppointment(x.AppointmentTime , x.AppointmentDate, x.FirstName , x.LastName , x.type , x.Email , x.UserId , x.DoctorId)">{{x.type}}</p>
+  <a class="button button-icon  ion-chevron-right" style="color: #ffffff;float: right;margin-top: -50px;font-size: 22px;margin-right: 20px;" ng-click="GoToPastDetailAppointment(x.AppointmentTime , x.AppointmentDate, x.FirstName , x.LastName , x.type , x.Email , x.UserId , x.DoctorId)" transitiontype="slide" direction="left" go-native></a>
+
+
+
+
+  <button class="button button-small" style="color: #191919;background-color: #ffffff;padding-right: 15px;padding-left: 15px;font-size: 14px; border-radius: 19px!important;font-weight: 600!important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="callPatient(x.Contact)">
+  <b>call back</b>
+</button>
+
+ </div>
+  </div>
+
+  </div>
+
+  <div class="card" ng-show="NoData2">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your appointment list is empty!</p>
+  </center>
+  </div>  
+  </ion-content>
+</ion-view>

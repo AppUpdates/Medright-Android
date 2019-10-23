@@ -1,0 +1,60 @@
+<ion-view title="{{u_name}}" hide-back-button="true"  cache-view="false" ng-init="GetMessages()">
+
+    <ion-nav-bar class="bar-stable">
+      
+      </ion-nav-bar>
+
+          <ion-nav-buttons side="left">
+    
+              <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()" transitiontype="slide" direction="down" go-native>
+              </button>
+  
+          </ion-nav-buttons>
+
+<ion-content padding= "true">
+
+<div ng-repeat = "x in Messages">
+
+<div class="talk-bubble" ng-if="x.sender_id==ReceiverId" style="float:left; border-radius:15px; background-color: #248FD3;">
+  <div class="talktext">
+    <p style="margin-top:-10px; font-size: 18px;">{{x.message_content}}<span style="float: right; font-size: 12px; color:rgba(68, 68, 68, 0.87);">{{x.message_date}}, {{x.message_time}}</span></p>
+<!--     <p style="float: left; font-size: 12px; color:rgba(68, 68, 68, 0.87);">{{x.message_time}}</p> -->
+  </div>
+</div>
+
+<div class="talk-bubble" ng-if="x.sender_id==SenderId" style="float:right; border-radius:15px; background-color: #F0F1F3;">
+  <div class="talktext">
+    <p style="margin-top:-10px; font-size: 18px;">{{x.message_content}}<span style="float: right; font-size: 12px; color:rgba(68, 68, 68, 0.87);">{{x.message_date}}, {{x.message_time}}</span></p>
+    <!-- <p style="float: left; font-size: 12px; color:rgba(68, 68, 68, 0.87);">{{x.message_time}}</p> -->
+  </div>
+</div>
+
+</div>
+
+
+ <!--  <span ng-show="pages">{{ChatPage}}</span>
+                 <ion-infinite-scroll
+                  on-infinite="LoadMoreMessages(ChatPage)"
+                icon="ion-loading-c"
+                  distance="5%">
+                 </ion-infinite-scroll>
+ -->
+</ion-content>
+
+
+          
+     
+<form id="footer-input">
+  <ion-footer-bar keyboard-attach class="item-input-inset" style="background : #50A0FF">
+    <label class="item-input-wrapper"  style="background-color: #ffffff
+; height:40px;">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="text" placeholder="Type a message" ng-model="message" style="color:#000000;">
+    </label>
+    <a class="button button-clear" ng-click="SaveMessages(message)" style="color:#000000;">
+      <i class="icon ion-android-send" style="    color: #ffffff;"></i>
+    </a>
+  </ion-footer-bar>
+</form>  
+
+</ion-view>

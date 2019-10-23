@@ -1,0 +1,68 @@
+<ion-view hide-back-button="true" cache-view="false" ng-init="GetDoctorNotesType()" hide-nav-bar="true">
+
+<ion-content class="home-background1">
+<div class="div-bg-image" style="padding:10px;"> 
+      <div ng-click="gobacktonotes()" transitiontype="slide" direction="right" go-native><img src="icons/left-arrow.png"></div>
+      <center>
+      <p style="color:#000000; font-size: 18px;font-weight: 500;margin-top: -27px;">Medical Records</p>
+      </center>
+      <p style="color: #FFFFFF;font-size: 18px;margin-bottom: 10px;font-weight: 400;margin-left: 23px;margin-top: 10px;">
+          Type
+      </p>
+      <center>
+        <label class="item item-input1 item-select1" style="margin-top: -2px;margin-right: 2px;margin-left: 2px">
+          <div class=""></div><br>
+          <select ng-model="selectedType" ng-options="y.type_name for y in Type"  style="font-size: 14px; color:#000000;" ng-change="GetTypeId(selectedType)" >            
+          </select>
+        </label>
+        <div class="item item-input1 icon item-icon-right" style="margin-right: 2px;margin-left: 2px">
+          <i class="icon ion-search placeholder-icon" style="font-size: 16px;color: #444;margin-right: -15px;"></i>
+         <input type="text" class="inputcss" placeholder="Search By Patient Name" style="color: #606067;"
+             ng-model="SearchName">    
+        </div>
+      </center>        
+    </div>  
+
+    <center>
+      <button class="button button-small" style="height: 37px;border-radius: 25px;background: #50A0FF;color: #fff;font-size: 17px;margin-top: -19px;border: 2px solid white;width: 37px;"><i class="ion-chevron-down" style="color:white;font-size: 16px;"></i></button>
+    </center><br>
+
+  <br>
+ 
+
+   <div class="list" style="background-color: transparent; margin-top: -6px;" ng-show="WithData">
+
+    <a ng-repeat="x in DoctorTestResult | filter:{Type:selectedType.type_id} | filter:{FirstName:SearchName}" ng-click="GoToDetailNotes(x.Id)" style="background-color: transparent;padding: 10px 5px 10px 90px;margin-top: 8px;line-height: 17px;border: 1px solid #ddd;" class="item item-avatar" transitiontype="slide" direction="left" go-native>
+
+    <img ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/userprofile/{{x.profile}}" onError="this.src= 'http://68.183.101.193/android/338/uploads/uron_person.jpg'">
+
+    <p ng-if = "x.TestName != ''"><span style="color: white;font-size: 15px;font-weight: 400;">Test:</span>&nbsp;<span style="color:#191919;font-size: 15px;">{{x.TestName}}</span></p>
+     <p ng-if = "x.visit_type != ''"><span style="color: white;font-size: 15px;font-weight: 400;">Visit name:</span>&nbsp; <span style="color:#191919;font-size: 15px;"> {{x.visit_type}}</span></p>
+    <p><span style="color: white;font-size: 15px;font-weight: 400;">Notes For:</span>&nbsp; <span style="color:#191919;font-size: 15px;"> {{x.FirstName}} {{x.LastName}}</span></p>
+  
+    <p><span style="color: white;font-size: 15px;font-weight: 400;">Date:</span>&nbsp; <span style="color:#191919;font-size: 15px"> {{x.CreatedDate1}}</span></p>
+    </a>
+
+</div>
+
+
+  <div ng-show="NoData" class="card">
+     <br>
+     <center>
+     <img ng-src="img/sad.png">
+     <br>
+     <p style="color:red;">Your notes list is empty</p>
+     </center>
+  </div>
+
+ <span ng-show="pagenumber">{{PageNumber}}</span>
+  <ion-infinite-scroll
+    on-infinite="LoadMoreDoctorMedicalRecords(PageNumber)"
+    icon="ion-loading-c"
+    distance="5%">
+  </ion-infinite-scroll>
+  
+
+  </ion-content>
+</ion-view>
+

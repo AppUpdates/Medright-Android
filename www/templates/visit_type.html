@@ -1,0 +1,59 @@
+<ion-view view-title="Visit Type" hide-back-button="true" cache-view="false" ng-init="LoadVisits()"  hide-nav-bar="true">
+
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left" ng-click="CloseVisits()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+
+
+<ion-content class="home-background1" style="padding: 10px;" has-bouncing="false">
+ <i class="ion-chevron-left" ng-click="CloseVisits()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </i>
+      <center>
+      <p style="color:#000000; font-size: 18px;font-weight: 500;margin-top: -27px;">Visit Type</p>
+      </center>
+<br><br>
+ <center>
+  <h4 style="
+    font-size: 16pt;color: #3e3838
+    ">
+    What type of appointment?
+    
+  </h4>  
+</center>
+ <br>
+ <div ng-repeat="x in type1"  ng-if="$index%3==0">
+
+        <div class="card"
+         ng-click="SelectVisit(type1[$index])" style="border-radius: 50px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);background: transparent;border: 1px solid white;">
+
+        &nbsp;&nbsp;&nbsp;<center>
+        <p style="color: #000000;margin-top: -5px;" >{{type1[$index].Name}} <span ng-if="type1[$index].Example != ''">({{type1[$index].Example}})</span></p>
+       </center>
+        </div>
+
+         <div class="card" 
+         ng-style="{'visibility': !!type1[$index + 1].Name ? 'visible' : 'hidden'}"
+      ng-click="SelectVisit(type1[$index + 1])" style="border-radius: 50px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);background: transparent;border: 1px solid white;"">
+        &nbsp;&nbsp;&nbsp;<center><p style="color: #000000;margin-top: -5px;" >{{type1[$index + 1].Name}}<span ng-if="type1[$index+1].Example != ''">({{type1[$index+1].Example}})</span></p>
+        </center>
+        </div>
+
+         <div class="card" 
+         ng-style="{'visibility': !!type1[$index + 2].Name ? 'visible' : 'hidden'}"
+         ng-click="SelectVisit(type1[$index + 2])"  style="border-radius: 50px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);background: transparent;border: 1px solid white;">
+        &nbsp;&nbsp;&nbsp;<center><p style="color: #000000;margin-top: -5px;" >{{type1[$index + 2].Name}}<span ng-if="type1[$index+2].Example != ''">({{type1[$index+2].Example}})</span></p></center>
+        </div>
+
+
+         
+      </div>
+
+
+
+
+
+</ion-content>
+</ion-view>
+

@@ -1,0 +1,70 @@
+<ion-view view-title="Add Addendum" hide-back-button="true" cache-view="false" hide-nav-bar="true">
+
+<ion-content class="home-background1">
+<div style="margin-top: 10px;">
+      <img src="icons/left-arrow.png" style="margin-left: 12px;" ng-click="goBackToNotes1()" transitiontype="slide" direction="right" go-native>
+      <center>
+      <p class="HeaderStyle">Add Addendum</p>
+      </center>
+ </div>
+<br>
+
+<div class="list">
+
+  <div style="margin-left: 10px;">
+  <label style="font-size: 15px;color: #000000;font-weight: 500;">Patient</label>
+  </div>
+  <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;">
+  <input type="text" placeholder="" ng-model="patientname" readonly="readonly" style="color: #ffffff;background: transparent;">
+  </label>
+
+
+  <div style="margin-left: 10px;">
+  <label style="font-size: 15px;color: #000000;font-weight: 500;">Type</label>
+  </div>
+  <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;" >
+  <input type="text" placeholder="" ng-model="typename" readonly="readonly" style="color: #ffffff;background: transparent;">
+  </label>
+
+  <div style="margin-left: 10px;" ng-show="showvisittype">
+  <label style="font-size: 15px;color: #000000;font-weight: 500;">Visit Type</label>
+  </div>
+  <label ng-show="showvisittype" class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;" >
+  <input type="text" placeholder="" ng-model="visittype1" style="color: #ffffff;background: transparent;" >
+  </label>
+
+  <div style="margin-left: 10px;" ng-show="showtestname">
+  <label style="font-size: 15px;color: #000000;font-weight: 500;">Test Name</label>
+  </div>
+  <label ng-show="showtestname" class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;" >
+  <input type="text" placeholder="" ng-model="testname1" style="color: #ffffff;background: transparent;" >
+  </label>
+
+  <div style="margin-left: 10px;">
+  <label style="font-size: 15px;color: #000000;font-weight: 500;">Notes</label>
+  </div>
+  <label class="item item-input" style="margin: 10px;background: transparent;border: 1px solid #ffffff;border-radius: 7px;" >
+  <textarea type="text" placeholder="" ng-model="notes1" style="color: #ffffff;background: transparent;"></textarea>
+  </label>
+
+  <label class="item item-input item-stacked-label" style="border-color: transparent;" ng-show="a">
+  <span class="input-label" style="font-size: 15px;color: #000000;font-weight: 500;">TypeId</span>
+  <textarea type="text" placeholder="" ng-model="TypeId" style="padding-left: 10px;"></textarea>
+  </label>
+  <label class="item item-input item-stacked-label" style="border-color: transparent;" ng-show="b">
+  <span class="input-label" style="font-size: 15px;color: #000000;font-weight: 500;">PatientId</span>
+  <textarea type="text" placeholder="" ng-model="PatientId" style="padding-left: 10px;"></textarea>
+  </label>
+
+</div>
+<br>
+
+<center>
+<button class="button button-small" style="margin: 10px;color: #000000;background-color: #ffffff; padding-right: 15px; padding-left: 15px;border-radius: 25px;min-width: 112px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-size: 15px;font-weight: 600" ng-click="SaveNotes(patientname,typename,visittype1,testname1,notes1,TypeId,PatientId)">
+Save
+</button>
+</center>
+
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,53 @@
+<ion-view hide-nav-bar="true" cache-view="false" hide-back-button="true">
+  <ion-content scroll="false" style="background-color: white">
+    <style type="text/css">
+      .slider-pager {
+        top: 464px!important;
+        color: white!important;
+        font-size: 15px;
+        margin-left: 6px;
+      }
+    </style>
+    <ion-slide-box on-slide-changed="slideChanged(index)" active-slide="slideIndex" auto-play="true" slide-interval="4000" does-continue="true">
+      <ion-slide>
+        <center class="animated rubberBand">
+          <br>
+          <h1>M<span style="color:red">ed</span>R<span style="color:red">ight</span></h1><br>
+          <img src="img/slide1.PNG" style="border-radius: 100px;height: 200px;width: 200px;">
+          <h3 style="margin-top: -10px;">Skip the Waiting Room</h3>
+          <p style="line-height: 30px;font-size: 20px;padding: 0px 12px 0px 12px">The wait time is typically 15 minutes or less to see an experienced, board certified doctor. </p>
+        </center><br><br><br><br>
+      </ion-slide>
+
+      <ion-slide>
+         <center class="animated swing" style="animation-delay:4500ms;">
+          <br>
+          <h1>M<span style="color:red">ed</span>R<span style="color:red">ight</span></h1><br>
+          <img src="img/slide2.PNG" style="border-radius: 100px;height: 200px;width: 200px;">
+          <h3 style="margin-top: -10px;">24/7/365</h3>
+          <p style="line-height: 30px;font-size: 20px;padding: 0px 12px 0px 12px">Spend less time away from work and less money than in the ER or urgent care clinic. </p>
+        </center><br><br><br><br>
+      </ion-slide>
+ 
+      <ion-slide>
+       <center class="animated shake" style="animation-delay:9000ms;">
+          <br>
+          <h1>M<span style="color:red">ed</span>R<span style="color:red">ight</span></h1><br>
+          <img src="img/slide3.PNG" style="border-radius: 100px;height: 200px;width: 200px;">
+          <h3 style="margin-top: -10px;">A complete care team</h3>
+          <p style="line-height: 30px;font-size: 20px;padding: 0px 12px 0px 12px">Choose a provider from MedRight's network of licensed experienced family physicians, pediatricians and therapists. </p>
+        </center><br><br><br><br><br>
+      </ion-slide>
+    </ion-slide-box>    
+
+  <ion-footer-bar class="footer-bar-custom" style="height: 67px;">   
+    <button class="button button-full button-balanced" style="border-radius:25px;margin-left: 15px;margin-right: 15px;background-color: #45B89C;bottom: 67px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);    font-size: 15px;
+    font-weight: 600;" ng-click="goToRegister()">
+    Create Account
+    </button>
+    <p class="item-center" style="margin-top: -5px;">Already have an account?<a ng-click="goToLogin();" style="font-weight: 600">&nbsp;Sign In</a></p>
+      
+    <!-- font-family: Bookman; -->
+  </ion-footer-bar>
+    </ion-content>
+</ion-view>

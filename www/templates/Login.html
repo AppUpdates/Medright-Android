@@ -1,0 +1,62 @@
+<ion-view view-title="Login" hide-back-button="true" cache-view="false" hide-nav-bar = "true" ng-init="test()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-content  style="background-color: #0d3250">
+    <br>
+    <center>
+      <img ng-src="img/logo.png" style="width: 119px;height: 119px;">
+      <span style="color: white;font-size: 23px;margin-left: -72px;">M<span style="color:orange">ed</span>R<span style="color:orange">ight</span></span><br>
+      <span style="color: white;letter-spacing: 5px;margin-top: 1px;margin-left: 45px;font-size: 16px;">Healthcare</span>
+    </center><br>
+
+    <form name="myForm">
+      <div class="" style="margin: 20px;">
+      <div style="margin: 0px;margin-top: 18px;">
+
+        <label class="item item-input" style="margin: 10px;border: 1px solid #0d3250;margin-bottom: -16px;">
+           <i class="ion-email" style="color: #0d3250;font-size: 22px; "></i>&nbsp;&nbsp;
+          <input class="placeholder" type="email" placeholder="Email Address" style="color: #606067;"
+                 ng-model="LoginEmail">
+
+        </label><br>
+        <label class="item item-input" style="margin: 10px;border: 1px solid #0d3250;margin-bottom: -16px;">
+        <i class="ion-key" style="color: #0d3250;font-size: 22px; "></i>&nbsp;&nbsp;
+          <input class="placeholder" type="password" placeholder="Password" style="color: #606067;"
+                 ng-model="LoginPass">
+        </label><br/>
+        <br>
+        <div style="text-align: center;">
+          <a ng-click="goToForgotPass();" style="font-size: 15px;color: #ffffff;text-decoration: none;font-weight: 500;" transitiontype="slide" direction="left" go-native>Forgot your password?</a>
+        </div>
+
+        <br>
+
+        <div class="button-bar">
+          <button class="button button-full "
+                  style="margin: 10px;color: #ffffff;background-color: #dc5d2e" ng-click="doLogin(LoginEmail,LoginPass)">
+            <b>Login</b>
+          </button>
+        </div>
+
+        <div class="button-bar">
+          <button class="button button-full "
+                  style="margin: 10px;color: #ffffff;background-color: #dc5d2e" ng-click="doLoginusingFingerPrint()">
+            <b>Login Using Fingerprint</b>
+          </button>
+        </div>        
+        <br>
+        <div class="row">
+          <div class="col col 40" style="float: left;">
+              <a ng-click="goToRegister()" style="font-size: 15px;color: #ffffff;text-decoration: none;font-weight: 500;" transitiontype="slide" direction="left" go-native>Join Now</a>
+          </div>
+          <div class="col col 55" style="text-align: right;">
+             <a ng-click="goToDLogin()" style="font-size: 15px;color: #ffffff;text-decoration: none;font-weight: 500;" transitiontype="slide" direction="left" go-native>Doctor's Login</a>
+          </div>
+        </div>
+        
+      </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
+
+

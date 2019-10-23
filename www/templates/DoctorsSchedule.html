@@ -1,0 +1,150 @@
+<ion-view  hide-back-button="true" cache-view="false" ng-init="LoadDates()" hide-nav-bar="true">
+ 
+  <ion-content class="home-background1" > 
+
+  <div class="bar bar-header" style="background: transparent;border-width: 0px;">
+  <button class="button button-icon icon ion-navicon" style="color: #000000;" ng-click="openMenu()"></button>
+  <div class="h1 title" style="color: #000000;font-weight: 400;letter-spacing: 0.5px;font-weight: 500;">Schedule Time</div> 
+  </div>
+
+<br><br><br>
+<center>
+<div>
+ <button class="button button-clear button-positive" ng-disabled="PrivevousBtn" style="float: left;margin-left: 50px;margin-top: -10px;"  ng-click="PerivousDay(dates)" ><i class="ion-chevron-left" style="color: #000000;font-size: 20px;"></i></button> 
+  
+  <button class="button button-clear button-positive" style="float: right;margin-right: 50px;margin-top: -10px;"
+   ng-click="NextDay(dates)" ng-disabled="NextBtn"><i class="ion-chevron-right" style="color: #000000;font-size: 20px;"></i></button>
+
+   <h4 style="color: #000000;font-size: 20px;" ng-model="GetDate"> {{dates | dateSuffix}}  {{dates | date: 'MMMM, yyyy'}}</h4>
+<!-- {{c}} -->
+<!-- {{dates | dateSuffix}}  {{dates | date: 'MMMM, yyyy'}} -->
+</div>
+</center>
+
+<br>
+<div class="row">
+<!-- style="background-color:#50A0FF;border-radius: 8px;margin-left: 13px;font-size: 13px; margin: 3px 7px;text-align: center;color: #ffffff" -->
+  <div class="col cell_l" style="background-color:#50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;" id="id1" 
+ ng-click="Button1(dates)" ng-hide="A1" ng-disable = "i">08:00 AM</div>
+   <div class="col cell_l" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center; font-weight: 500;"  
+ ng-click="Button2()" ng-show="A2" id="id1">08:00 AM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;" id="id2" 
+   ng-click="Button3(dates)" ng-hide="B1">08:30 AM</div>
+   <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center; font-weight: 500;" 
+   ng-click="Button4()" ng-show="B2" id="id2">08:30 AM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff; font-weight: 500;" id="id3" 
+  ng-click="Button5(dates)" ng-hide="C1">09:00 AM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center; font-weight: 500;" 
+   ng-click="Button6()" ng-show="C2" id="id3" >09:00 AM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id4" 
+ ng-click="Button7(dates)" ng-hide="D1">09:30 AM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id4" 
+ ng-click="Button8()" ng-show="D2">09:30 AM</div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id5" 
+  ng-click="Button9(dates)" ng-hide="E1">10:00 AM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id5" 
+  ng-click="Button10()" ng-show="E2">10:00 AM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id6" 
+  ng-click="Button11(dates)" ng-hide="F1">10:30 AM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id6" 
+  ng-click="Button12()" ng-show="F2">10:30 AM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id7" 
+  ng-click="Button13(dates)" ng-hide="G1">11:00 AM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id7" 
+  ng-click="Button14()" ng-show="G2">11:00 AM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id8" 
+   ng-click="Button15(dates)" ng-hide="H1">11:30 AM</div>
+    <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id8" 
+   ng-click="Button16()" ng-show="H2">11:30 AM</div>
+</div>
+<br>
+
+
+<div class="row">
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id9" 
+  ng-click="Button17(dates)" ng-hide="I1">12:00 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id9" 
+  ng-click="Button18()" ng-show="I2">12:00 PM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id10" 
+ ng-click="Button19(dates)" ng-hide="J1">12:30 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id10" 
+ ng-click="Button20()" ng-show="J2">12:30 PM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id11" 
+   ng-click="Button21(dates)" ng-hide="K1">01:00 PM</div>
+   <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id11" 
+   ng-click="Button22()" ng-show="K2">01:00 PM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id12" 
+ ng-click="Button23(dates)" ng-hide="L1">01:30 PM</div>
+ <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id12" 
+ ng-click="Button24()" ng-show="L2">01:30 PM</div>
+</div>
+<br>
+<div class="row">
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id13" 
+ ng-click="Button25(dates)" ng-hide="M1">02:00 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id13" 
+ ng-click="Button26()" ng-show="M2">02:00 PM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id14" 
+  ng-click="Button27(dates)"  ng-hide="N1">02:30 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id14" 
+  ng-click="Button28()"  ng-show="N2">02:30 PM</div>
+ 
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id15" 
+  ng-click="Button29(dates)"  ng-hide="O1">03:00 PM</div>
+   <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id15" 
+  ng-click="Button30()"  ng-show="O2">03:00 PM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id16" 
+  ng-click="Button31(dates)" ng-hide="P1">03:30 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id16" 
+  ng-click="Button32()" ng-show="P2">03:30 PM</div>
+</div>
+<br>
+<div class="row">
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id17" 
+  ng-click="Button33(dates)" ng-hide="Q1">04:00 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id17" 
+  ng-click="Button34()" ng-show="Q2">04:00 PM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id18" 
+ ng-click="Button35(dates)" ng-hide="R1">04:30 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id18" 
+ ng-click="Button36()" ng-show="R2">04:30 PM</div>
+
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id19" 
+  ng-click="Button37(dates)" ng-hide="S1">05:00 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id19" 
+  ng-click="Button38()" ng-show="S2">05:00 PM</div>
+
+  <div class="col" style="background-color: #50A0FF;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;color: #ffffff;font-weight: 500;" id="id20" 
+ ng-click="Button39(dates)" ng-hide="T1">05:30 PM</div>
+  <div class="col" style="background-color: #66CD00;border-radius: 25px;margin-left: 13px;font-size: 12px; margin: 3px 7px;text-align: center;font-weight: 500;" id="id20" 
+ ng-click="Button40()" ng-show="T2">05:30 PM</div>
+</div>
+<br>
+<center>
+<a class="button button-small" style="color:#000000;background-color: #ffffff;font-size: 15px;width:40%;font-weight: 500;border-radius: 25px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);font-weight: 600" id="imageURI" ng-click="SetTime()">SAVE</a>
+
+<br><br>
+</center>
+
+
+
+  </ion-content>
+</ion-view>

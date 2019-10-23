@@ -1,0 +1,59 @@
+<ion-view hide-back-button="true" cache-view="false" ng-init="GetPatients()" hide-nav-bar="true">
+
+<ion-content class="home-background1">
+
+  <div class="bar bar-header" style="background: transparent;border-width: 0px;">
+  <button class="button button-icon icon ion-navicon" style="color: #000000;" ng-click="openMenu()"></button>
+  <div class="h1 title" style="color: #000000;font-weight: 500;letter-spacing: 0.5px;">Add Notes</div>
+  <button class="button button-icon  ion-arrow-down-c" style="color: #000000;" ng-click="MyNotes()" transitiontype="slide" direction="left" go-native></button>
+</div>
+
+<br><br><br>
+<div style="margin-left: 10px;margin-right: 10px;">
+    <label class="item item-input item-select" style="width:100%;border-radius: 7px;background: transparent;border: 1px solid #ffffff;"> 
+     <div class="input-label">
+     <p style="color: #ffffff; font-size: inherit;">Patient</p>
+     </div>    
+     <select style="color: #000000;background: transparent;color: #ffffff" ng-model="patient" ng-options="data.FirstName for data in plan1" >
+     </select>
+   </label>
+
+
+    <br><br>
+
+    <label class="item item-input item-select" style="border-radius: 7px;background: transparent;border: 1px solid #ffffff;" >
+    <div class="input-label" style="color: #ffffff;">
+      TYPE:
+    </div>
+    <select  ng-model="selectedType" ng-options="y.type_name for y in Type"  style="background: transparent;color: #ffffff;font-size: 16px;" ng-change="GetTypeId(selectedType)" >        
+    </select>
+  </label>
+
+
+  <br><br>
+
+    <label class="item item-input" style="border-radius: 7px;background: transparent;border: 1px solid #ffffff;margin-top: -15px; width: 100%;" ng-hide="HideVisitType">
+    <input  type="text" placeholder="Visit Type" style="color: #ffffff;"
+               ng-model="visittype" class="change">
+    </label>
+
+    <label class="item item-input" style="border-radius: 7px;background: transparent;border: 1px solid #ffffff;margin-top: -15px; width: 100%;" ng-show="ShowTestName">
+    <input class="change" type="text"  placeholder="Test Name" style="color: #ffffff;"
+               ng-model="test">
+    </label>
+
+    <br>
+
+    <textarea class="change" ng-model="notes" type="text" placeholder="&nbsp;&nbsp;&nbsp;Notes" style="width: 100%;height: 85px; border-radius: 7px;background: transparent;border: 1px solid #ffffff;margin-top: 10px;color: #ffffff">></textarea>
+
+</div>
+<br>
+<center>
+<button class="button button-small" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);    font-size: 15px;margin: 10px;color: #000000;background-color: #ffffff; padding-right: 15px; padding-left: 15px;border-radius: 25px;min-width: 112px;font-weight: 600" ng-click="SaveNotes(patient,selectedType,visittype,test,notes)">
+Save
+</button>
+</center>
+
+</ion-content>
+</ion-view>
+

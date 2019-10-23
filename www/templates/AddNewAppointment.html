@@ -1,0 +1,76 @@
+<ion-view view-title="Add Appointment" cache-view="false" ng-init="loadAddAppoint()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button  button-clear ion-close-round" ng-click="GoBackToList()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>
+    </button>
+  </ion-nav-buttons>
+
+
+  <ion-content class="home-background1">
+    <div style="margin-top: 10px;" class="list">
+    <br>
+
+    <div style="text-align: center;margin-top: -15px;margin-bottom: 6px;">
+    <label style="font-size: 15px;color: #000000;font-weight: 500;">Select Provider</label>
+    </div>
+    <div class="button-bar" style="border-color: transparent;">
+    <ion-radio ng-value="value1" ng-click="changedRadioValue('value1')" class="appointment-radio1" ng-style="{'background-color': DviewbgColor}" transitiontype="slide" direction="left" go-native>
+    <span ng-style="{'color': DviewColor}">Personal</span>
+    </ion-radio>
+    <ion-radio ng-value="value2" ng-click="changedRadioValue('value2')"  class="appointment-radio2" ng-style="{'background-color': DviewbgColor1}" transitiontype="slide" direction="left" go-native>
+    <span ng-style="{'color': DviewColor1}">Any</span>
+    </ion-radio>
+    </div>
+     
+     <br>
+     <span>{{doc_id}}, {{sch_id}}</span>
+
+     <div style="text-align: center;margin-bottom: -9px;" ng-show="ShowDoctor">
+     <label style="font-size: 15px;color: #000000;font-weight: 500;">Selected Doctor</label>
+     </div>
+     <br>
+     <div class="item item-avatar" style="margin-left: 9px;margin-right: 9px;" ng-show="ShowDoctor">
+     <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{doc_profile}}">
+     <h2><span style="    font-weight: 500;">Doctor : {{doc_name}}</span></h2>
+     <p style="font-weight: 500">{{doc_speciality}}</p> 
+     <p style="word-break: keep-all;text-align: justify;white-space: initial;"><span style="font-weight: 500;">Appoitment Date: {{appointment_time | dateSuffix }} {{appointment_time | date: 'MMMM, yyyy'}}</span></p> 
+      <p style="word-break: keep-all;text-align: justify;white-space: initial;"><span style="font-weight: 500;">Appoitment Time: {{appointment_date}} </span></p>
+      <p style="word-break: keep-all;text-align: justify;white-space: initial;"><span style="font-weight: 500;">Where: {{address1}} </span></p>          
+     </div>
+     <br>
+
+     <div style="text-align: center;margin-top: 5px;margin-bottom: 6px;">
+     <label style="font-size: 15px;color: #000000;font-weight: 500;">I want to be seen for</label>
+     </div>
+
+    <div style="height:50px; background-color: #ffffff; margin-left: 10px; margin-right: 10px;" ng-click="OpenVisit()" transitiontype="slide" direction="left" go-native>
+    <p style="color: #1565C0; font-size: inherit; margin-left: 10px; padding-top: 13px;">Tap here to select visit type</p>
+    <div class="item" ng-show="visit1" style="margin: 0px;">
+    <h3>{{VisitName}}</h3>
+    <p>{{VisitExample}}</p>
+    </div>
+    </div>    
+
+    <br><br><br>
+
+    <div style="text-align: center;margin-top: 15px;">
+    <label style="font-size: 15px;color: #000000;font-weight: 500;">I want to cover</label>
+    </div>
+
+    <label class="item item-input" style="margin: 10px;border-color: transparent;">
+    <textarea placeholder="Message" rows="5" cols="50" ng-model="AppointMessage"></textarea>
+    </label>
+
+    <br>
+
+    <ion-checkbox ng-model="reminder" style="background-color: transparent; border: 1px solid #ffffff; color:#ffffff;">Receive Reminder</ion-checkbox>
+    <br>
+    <div class="button-bar">
+    <button class="button button-full" style="margin: 10px;background-color: #ffffff;color: #000000;font-weight: 600;border-radius: 25px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);margin-left: 10px;margin-right: 10px;font-size: 17px" ng-click="SaveAppointment(doc_id, AppointMessage, appointment_date,appointment_time, reminder, sch_id, VisitName)" transitiontype="slide" direction="right" go-native>
+          Save
+    </button>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>
+

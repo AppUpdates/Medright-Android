@@ -1,0 +1,194 @@
+<ion-view view-title="" hide-back-button="true" cache-view="false">
+  <ion-nav-bar class="bar-stable"  align-title="center"></ion-nav-bar>
+    <ion-nav-buttons side="left">
+     <button class="button button-clear ion-close" ng-click="goBackToMain()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>    
+     </button>
+    </ion-nav-buttons> 
+
+  <ion-content padding="true">
+   
+   <center>
+   <h4>HEALTH HISTORY QUESTIONNARIE</h4>
+   </center>
+
+ <div class="item item-divider">
+    GENERAL INFO
+  </div>
+
+<label class="item item-input item-stacked-label history-label-border">
+    <span class="input-label history-span-color" style="display: list-item;">Name</span>
+    <p>{{historyData.name}}</p>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+    <span class="input-label history-span-color" style="display: list-item;">Gender</span>
+    <p ng-if = "NoData != ''">{{historyData.gender}}</p>
+    <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">DOB</span>
+   <p ng-if = "NoData != ''">{{historyData.dob | date:'dd-MM-yyyy'}}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;"> Merital Status</span>
+   <p>{{historyData.merital_status}}</p>
+</label>
+
+
+<label class="item item-input item-stacked-label history-label-border">
+    <span class="input-label history-span-color" style="display: list-item;">Previus or referring doctor</span>
+    <p  ng-if = "NoData != ''">{{historyData.ref_doctor}}</p>
+    <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Date of last physical exam</span>
+   <p  ng-if = "NoData != ''">{{historyData.date_of_exam | date:'dd-MM-yyyy' }}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Emergency contact</span>
+   <p  ng-if = "NoData != ''">{{historyData.emergency_phone}}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+ <div class="item item-divider">
+    PERSONAL HEALTH HISTORY
+  </div>
+
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Childhood illness</span>
+   <p  ng-if = "NoData != ''">{{historyData.childhood_illness}}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+ 
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color" style="display: list-item;">Surgeries
+    </span>
+</label>
+
+<label class="item item-stacked-label history-last-labels" ng-show="History1" ng-click="viewList(1)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons" ng-if="SurgeryCounter == 1"> View {{SurgeryCounter}}  record</i>
+<i class="ion-ios-list-outline history-icons" ng-if="SurgeryCounter > 1"> View {{SurgeryCounter}}  records</i>
+</label>
+
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color" style="display: list-item;">Other hospitalizations
+    </span>
+</label>
+
+<label class="item item-stacked-label history-last-labels" ng-if="History2" ng-click="viewList(2)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons" ng-if="HopitalizationCounter == 1"> View {{HopitalizationCounter}}  record</i>
+<i class="ion-ios-list-outline history-icons" ng-if="HopitalizationCounter > 1"> View {{HopitalizationCounter}}  records</i>
+</label>
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color history-long-label" style="display: list-item;">List your prescribed drugs and over-the-counter drugs, such as vitamins and inhalers
+    </span>
+</label>
+
+
+<label class="item item-stacked-label history-last-labels" ng-if="History3" ng-click="viewList(3)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons" ng-if="DrugsCounter == 1"> View {{DrugsCounter}}  record</i>
+<i class="ion-ios-list-outline history-icons" ng-if="DrugsCounter > 1"> View {{DrugsCounter}}  records</i>
+</label>
+
+<label class="item item-input item-stacked-label">
+    <span class="input-label history-span-color history-long-label" style="display: list-item;">Allergies to medications
+    </span>
+</label>
+
+
+<label class="item item-stacked-label history-last-labels" ng-if="History4" ng-click="viewList(4)" style="background-color: #FFFFFF;">
+<i class="ion-ios-list-outline history-icons" ng-if="AllergiesCounter == 1"> View {{AllergiesCounter}}  record</i>
+<i class="ion-ios-list-outline history-icons" ng-if="AllergiesCounter > 1"> View {{AllergiesCounter}}  records</i>
+</label>
+
+
+
+<div class="item item-divider">
+    HEALTH HABITS AND PERSONAL SAFETY
+</div>
+
+<p class="history-info-security-text">ALL QUESTIONS CONTAINED IN THIS QUESTIONNAIRE ARE OPTIONAL AND WILL BE KEPT STRICTLY CONFIDENTIAL.</p>
+
+
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Excercise?</span>
+   <p ng-if = "NoData != ''">- {{historyData.excercise}}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">If Yes, how often?</span>
+   <p ng-if="historyData.occasionally == true">- Occasionally</p>
+   <p ng-if="historyData.occasionally == false">- Regularly</p>
+    <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+
+<br>
+
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Alcohol?</span>
+   <p ng-if = "NoData != ''">- {{historyData.alcohol}}</p>
+    <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">How many drinks per week?</span>
+   <p ng-if = "NoData != ''">{{historyData.no_of_drinks}}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<br>
+
+
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Tobacco?</span>
+   <p ng-if = "NoData != ''">- {{historyData.tobacco}}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<br>
+
+
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-span-color" style="display: list-item;">Sexually Active?</span>
+   <p ng-if = "NoData != ''">- {{historyData.sex_active}}</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+<label class="item item-input item-stacked-label history-label-border">
+   <span class="input-label history-long-label history-span-color" style="display: list-item;">Illness related to the Human Immunodeficiency Virus (HIV), such as AIDS, has
+become a major public health problem. Risk factors for this illness include intravenous
+drug use and unprotected sexual intercourse. Would you like to speak with your
+provider about your risk of this illness?</span>
+   <p ng-if="historyData.hiv_yes == true">- Yes</p>
+   <p ng-if="historyData.hiv_yes == false">- No</p>
+   <p ng-if = "NoData == ''">Not Provided Yet</p>
+</label>
+
+
+
+
+</ion-content>
+
+
+
+</ion-view>
+

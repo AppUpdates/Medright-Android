@@ -1,0 +1,97 @@
+<ion-view view-title="See a Doctor" hide-back-button="true" cache-view="false" ng-init="loadDoctors()">
+<ion-nav-bar class="bar-stable"></ion-nav-bar>
+<ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()" transitiontype="slide" direction="right" go-native>
+    </button>
+</ion-nav-buttons>
+
+<ion-content style="background: linear-gradient(#90CAF9,#0D47A1);">
+
+  <div ng-show="ShowFilter">
+    <label class="item item-input" style="margin: 10px;border-color: #0D47A1;height: 37px">
+      <input type="text" placeholder="Search by Name" style="color: #606067;"
+             ng-model="SearchName">
+    </label>
+    <label class="item item-input item-select" style="margin: 10px;border-color: #0D47A1;height: 31px;">
+      <div class="input-label" style="font-weight: 500;">Filter By&nbsp;</div>
+      <select ng-model="FilterId"
+              ng-options="c.Fid as c.Fname for c in FilterByList"
+              ng-change="filterChanged(FilterId)" required>
+        <option value="">Select Filter By</option>
+      </select>
+    </label>
+
+    <label class="item item-input item-select" style="margin: 10px;border-color: #0D47A1;height: 31px;">
+      <div class="input-label"  style="font-weight: 500;">Sort By&nbsp;</div>
+      <select ng-model="SortId"
+              ng-options="c.speciality as c.speciality for c in SortByList"
+              ng-change="applySort(SortId)" required>
+        <option value="">Select Sort By</option>
+      </select>
+    </label>
+    </div>
+
+
+<div class="card" ng-show="DoctorsList == ''">
+  <br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Currently there are no doctor available in this city!</p>
+</div>
+
+
+<div ng-if="spec" class="list" ng-repeat="Drl in DoctorsList | filter:{name:SearchName}
+             | filter:{speciality:SortId}" style="margin-bottom: -30px;margin-top: -20px;">
+      <div class="card" style="background-color: #0D47A1;">
+        <div class="item item-text-wrap" style="padding: 0px;border-color: transparent;background-color: #0D47A1;">
+          <div class="item item-thumbnail-left" style="padding-bottom: 5px;background-color: #0D47A1; border-color: transparent;" >
+            <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}"
+              style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 81px;width: 84px;">
+              <h2 style="margin-top: -8px;">
+              <span style="color: white;">{{Drl.name}}</span>
+              <span style="float:right;">
+                <a href="tel:{{Drl.emer_contact}}" class="icon ion-android-call" style="font-size: 25px;color: white" ng-show="{{Drl.IsAvailable}}"></a>&nbsp;&nbsp;&nbsp;             
+                <i class="ion-ios-location" style="font-size: 25px;color: white" ng-click="goToRoute(Drl.off_address)" transitiontype="slide" direction="left" go-native></i>
+              </span>
+            </h2> 
+            <p style="color:white">{{Drl.speciality}}</p>
+             <hr>
+            <i class="icon ion-plus-round" style="color: white;font-size: 15px">   
+            <a style="font-size: 13px;margin-left: -3px;color:white;" ng-click="addPersonal(Drl.doc_id)">&nbsp;Add to personal</a></i> 
+          </div>
+        </div>        
+      </div>
+    </div>
+
+    <div ng-if="off" class="list" ng-repeat="Drl in DoctorsList | filter:{name:SearchName}
+             | orderBy:orderCri" style="margin-bottom: -30px;margin-top: -20px;">
+      <div class="card" style="background-color: #0D47A1;">
+        <div class="item item-text-wrap" style="padding: 0px;border-color: transparent;background-color: #0D47A1;">
+         <div class="item item-thumbnail-left" style="padding-bottom: 5px;background-color: #0D47A1; border-color: transparent;" >
+            <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 81px;width: 84px;">
+            <h2 style="margin-top: -8px;">
+              <span style="color: white;">{{Drl.name}}</span>
+              <span style="float:right;">
+                <a href="tel:{{Drl.emer_contact}}" class="icon ion-android-call"  style="font-size: 25px;color: white" ng-show="{{Drl.IsAvailable}}"></a>&nbsp;&nbsp;&nbsp;             
+                <i class="ion-ios-location" style="font-size: 25px;color: white" ng-click="goToRoute(Drl.off_address)"></i>
+              </span>
+            </h2> 
+            <p style="color:white">{{Drl.speciality}}</p>
+             <hr>
+            <i class="icon ion-plus-round" style="color: white;font-size: 15px">   
+            <a style="font-size: 13px;margin-left: -3px;color:white;" ng-click="addPersonal(Drl.doc_id)">&nbsp;Add to personal</a></i> 
+          </div>
+        </div>        
+      </div>
+    </div>
+
+
+    <span ng-show="pagenumber">{{PageNumber}}</span>
+  <ion-infinite-scroll
+    on-infinite="LoadAllDoctors(PageNumber)"
+    icon="ion-loading-c"
+    distance="5%">
+  </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+

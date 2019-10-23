@@ -1,0 +1,41 @@
+<ion-view view-title="Reminder for PR" cache-view="false" ng-init="loadUserReminder()"">
+  <ion-nav-bar class="bar-stable"  align-title="center"></ion-nav-bar>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left" ng-click="GoBack()" style="font-size: 25px;" transitiontype="slide" direction="right" go-native>    
+    </button>
+   </ion-nav-buttons> 
+
+ 
+  <ion-content style="background: #fff">
+  <!--  <div style="padding: 10px;font-size: 22px;font-weight: 450;background: #d6d6d6;margin-bottom: -4px;color: #323232;">Today<img src="img/double-tick-indicator.png" style="float: right;"></div> -->
+  <card class="item item-avatar" ng-repeat="rem in ReminderCatList"  style="height: 85px;border: none;background-color: rgb(80, 160, 255);margin-top: 4px" ng-show="ShowData">
+  <img src="http://68.183.101.193/android/338/gif/{{rem.CategoryImage}}" style="height: 37px;width: 37px;border-radius: 20%;">
+  <h3 style="margin-left: 10px;color:white;font-size: 15px;font-weight: 400;">{{rem.CategoryName}}
+  <button class="button button-small" style="float: right;background-color: #50A0FF; color: #ffffff; padding-top: 0px; padding-bottom: 0px;" ng-click="deleteReminder(rem.Id, rem.RandomId)">Delete
+  </button>
+  </h3>
+  <p style="margin-bottom:-10px;margin-top: -10px;font-size: 12px;margin-left: 10px;color:white">{{rem.StartDate}} At {{rem.Time1}}</p>
+  </card>
+
+  <div class="card" ng-show="NoData"><br>
+  <center>
+  <img ng-src="img/sad.png">
+  <p style="color:#D80027;">Your reminder list is empty!</p>
+  </center>
+  </div>
+
+   <span ng-show="pagenumber">{{PageNumber}}</span>
+  <ion-infinite-scroll
+    on-infinite="LoadMoreUserReminder(PageNumber)"
+    icon="ion-loading-c"
+    distance="5%"
+    ng-if="has_more_reminder"
+    immediate-check="false">
+  </ion-infinite-scroll>
+    <center>
+    <ion-spinner icon="spiral"  ng-show="ShowSpinner"></ion-spinner>
+    </center>
+  </ion-content>
+</ion-view>
+

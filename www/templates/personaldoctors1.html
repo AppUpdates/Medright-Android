@@ -1,0 +1,80 @@
+<ion-view view-title="Personal Doctors" hide-back-button="true" cache-view="false" ng-init="getPersonalDocs()">
+   <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+  </ion-nav-buttons>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <i class="ion-plus" ng-click="GoToAddPersonalDoctors()" style="float: right;color: white; width:31px; font-size: 25px;margin-top: 5px;"></i>
+  </ion-nav-buttons>
+
+  <ion-content style="background: linear-gradient(#90CAF9,#0D47A1);">
+    <label class="item item-input" style="margin: 10px;border-color: #0D47A1;height: 37px">
+      <input type="text" placeholder="Search by Name" style="color: #606067;"
+             ng-model="SearchName">
+    </label>
+
+    <label class="item item-input item-select" style="margin: 10px;border-color: #0D47A1;height: 31px;">
+      <div class="input-label" style="font-weight: 500;">Filter By&nbsp;</div>
+      <select ng-model="FilterId"
+              ng-options="c.Fid as c.Fname for c in FilterByList"
+              ng-change="filterChanged(FilterId)" required>
+        <option value="">Select Filter By</option>
+      </select>
+    </label>
+
+    <label class="item item-input item-select" style="margin: 10px;border-color: #0D47A1;height: 31px;">
+      <div class="input-label"  style="font-weight: 500;">Sort By&nbsp;</div>
+      <select ng-model="SortId"
+              ng-options="c.speciality as c.speciality for c in SortByList"
+              ng-change="applySort(SortId)" required>
+        <option value="">Select Sort By</option>
+      </select>
+    </label>
+
+    <div >
+
+    <center><h3 ng-if="PersonalDocList == ''" style="margin-top: 20px;">You don't have any personal doctor yet</h3></center>
+    <div style="">
+    <div ng-if="spec" class="list" ng-repeat="Drl in PersonalDocList | filter:{name:SearchName}
+             | filter:{speciality:SortId}" style="margin-bottom: 0px;">
+
+      <div class="item item-thumbnail-left" style="margin: 10px;border-color: transparent;background-color:#0D47A1;">
+        <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}">
+        <h2><span style="color: #f8f8f8">Doctor : {{Drl.name}}</span></h2>
+        <p style="color: #f8f8f8">{{Drl.speciality}}</p>
+        <div style="margin-top: 8px;margin-bottom: -9px;">                
+          <i class="icon ion-ios-videocam" style="color:#f8f8f8;font-size: 25px" ng-click="VideoChat(Drl.doc_id, Drl.name)"></i>        
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="tel:{{Drl.emer_contact}}" class="icon ion-android-call" style="color:#f8f8f8;font-size: 25px"></a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="icon ion-ios-location" style="color:#f8f8f8;font-size: 25px" ng-click="goToRoute(Drl.off_address)"></i>          
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+       <div>
+
+    <div ng-if="off" class="card list" ng-repeat="Drl in PersonalDocList | filter:{name:SearchName}
+             | orderBy:orderCri" style="margin-bottom: 0px">
+  
+      <div class="item item-avatar" style="border-color: transparent;background-color:#0D47A1;">
+        <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{Drl.profile}}">
+        <h2><span style="color: #f8f8f8">Doctor : {{Drl.name}}</span></h2>
+        <p style="color: #f8f8f8">{{Drl.speciality}}</p>
+        <div style="margin-top: 8px;margin-bottom: -9px;">                
+          <i class="icon ion-ios-videocam" style="color: #f8f8f8;font-size: 25px" ng-click="VideoChat(Drl.doc_id, Drl.name)"></i>        
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="tel:{{Drl.emer_contact}}" class="icon ion-android-call" style="color: #f8f8f8;font-size: 25px" ng-click="goToRoute(Drl.off_address)"></a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="icon ion-ios-location" style="color: #f8f8f8;font-size: 25px" ng-click="goToRoute(Drl.off_address)"></i>          
+        </div>
+      </div>
+    
+    </div>
+    </div>
+  </ion-content>
+</ion-view>
+

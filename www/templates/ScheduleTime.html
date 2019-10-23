@@ -1,0 +1,46 @@
+<ion-view view-title="Doctor Availability" hide-back-button="true" cache-view="false" ng-init="GetDoctorSchedule()">
+  <!-- <ion-nav-bar class="bar-stable" ng-style="{'background-color': viewColor}> -->
+  <ion-nav-bar class="bar-stable "></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="goBack()">
+    </button>
+  </ion-nav-buttons>
+  
+  <ion-content>
+
+     <div class="item item-avatar" style="width:95%; margin-left: 9px;" ng-show="ShowDoctor">
+          <img src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{doc_profile}}">
+          <h2><span>Doctor : {{doc_name}}</span></h2>
+          <p>{{doc_speciality}}</p>          
+     </div>
+       
+       
+       <span ng_show="d_id">{{doc_id}}</span>
+       <span ng_show="d_id">{{doc_profile}}</span>
+       <span ng_show="d_id">{{doc_name}}</span>
+       <span ng_show="d_id">{{doc_speciality}}</span>
+      
+		    
+
+
+		        <div class="card" ng-repeat="y in seven_days"> 
+
+
+		        <p style="margin-left: 10px; font-weight: 600;">{{y.dates}}</p>
+
+            
+            
+             
+            <li class="item" ng-repeat="x in ScheduleData" ng-if="x.date_c == y.date_c" style="color:green;" ng-click="GoBackToAppointment(doc_id,doc_profile,doc_name,doc_speciality,x.app_date,x.app_time, x.sch_id)">
+            {{x.app_time}}
+            <i class="icon ion-chevron-right" style="font-size: 20px; color:#1565C0; float: right;"></i>
+            </li> 
+		    
+
+		        </div>
+		    
+
+
+     
+  </ion-content>
+</ion-view>

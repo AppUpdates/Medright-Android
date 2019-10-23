@@ -1,0 +1,57 @@
+<ion-view hide-back-button="true" cache-view="false" ng-init="GetDetailNotes()" hide-nav-bar="true">
+
+<ion-content class="home-background1">
+
+ <div style="margin-top: 10px;">
+      <img src="icons/left-arrow.png" style="margin-left: 12px;" ng-click="goBackToNotes()" transitiontype="slide" direction="right" go-native>
+      <center>
+      <p class="HeaderStyle">{{MedicalRecords}}</p>
+      </center>
+ </div>
+
+<div class="list list-inset" ng-repeat="x in DetailNotes" style="background:transparent;">
+<div id="legalnotice">
+
+ <div style="padding: 20px;">
+          <span style="color: #ffffff;font-size: 19px;">Patient</span>
+          <p style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 10px;font-weight: 500">{{x.FirstName}} {{x.LastName}}</p>
+          <br>
+
+          <span style="color: #ffffff;font-size: 19px;" ng-if="x.visit_type != ''">Visit type</span>
+          <p style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 10px;font-weight: 500" ng-if="x.visit_type != ''">{{x.visit_type}}</p>
+          
+          <span ng-if="x.TestName != ''" style="color: #ffffff;font-size: 19px;">Test</span>
+          <p  style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 10px;font-weight: 500" ng-if="x.TestName != ''">{{x.TestName}}</p>    
+          <br>
+
+          <span style="color: #ffffff;font-size: 19px;">Date of visit</span>
+          <p style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 10px;font-weight: 500">{{date}}</p>
+          <br>  
+
+          
+          <span ng-if="MedicalRecords == 'Clinical Notes'" style="color: #ffffff;font-size: 19px;">Physician </span>
+          <p  style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 10px;font-weight: 500" ng-if="MedicalRecords == 'Clinical Notes'">{{doctorname}}</p>
+          
+          <span style="color: #ffffff;font-size: 19px;" ng-if="MedicalRecords == 'Lab Results'">Ordered By </span>
+          <p  style="margin-left: 50px;color: #323232;font-size: 18px;margin-top: 10px;font-weight: 500" ng-if="MedicalRecords == 'Lab Results'">{{doctorname}}</p>         
+       </div>
+
+
+</div>
+<br>
+<center>
+<div class="button-bar" style="width:90%;">
+  <a class="button button-small" style="color: #000000;background-color: #ffffff;font-weight: 600;
+    border-radius: 25px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);" ng-click="AddAddendum(x.FirstName,MedicalRecords,x.visit_type,x.TestName,x.Notes,x.Type,x.PatientId)" transitiontype="slide" direction="left" go-native>ADD ADDENDUM</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a class="button button-small" style="color: #000000;background-color: #ffffff;font-weight: 600;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    border-radius: 25px;   " id="imageURI" ng-click="Print(MedicalRecords,x.FirstName,x.LastName,x.visit_type,x.TestName,doctorname,date,x.Notes)">PRINT</a>
+ 
+</div>
+
+
+<br>
+</center> 
+</div>
+  </ion-content>
+</ion-view>
+

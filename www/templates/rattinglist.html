@@ -1,0 +1,45 @@
+<ion-view view-title="Ratting List" ng-init="GetReviews()" hide-back-button="true">
+<ion-nav-bar class="bar-stable">          
+</ion-nav-bar>
+
+          <ion-nav-buttons side="left">
+    
+          <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()">
+          </button>
+  
+         </ion-nav-buttons>
+
+<ion-nav-buttons side="right" >
+<i class="ion-arrow-right-c" style="float: right;color: #E9F1F8;width:31px; font-size: 25px;margin-top: 5px;"
+ ng-click="GoToRateApp()"  transitiontype="slide" direction="up" go-native></i>
+</ion-nav-buttons>
+<ion-content style="background-color: #DDDDDD">
+<br>
+
+  <div class="list card" ng-repeat="x in Review" ng-show="ShowData">
+    <a class="item item-avatar"  > 
+     <img src="{{x.user_profile}}" style="border-radius:50%;" width="60"; height="60";>
+    <h4>{{x.username}}</h4>
+      <p>{{x.review}}</p>
+      <rating class="rating-block" ng-model="x.total"  style="pointer-events:none !important;"></rating>
+
+   </a>
+
+
+</div>
+<Center><p ng-show="NoData" style="font-size: 25px;color: #D50000"><br><br>No Reviews Found</p></Center>
+
+
+
+<span ng-show="pagenumber">{{PageNumber}}</span>
+
+  <ion-infinite-scroll
+    on-infinite="LoadMoreProjects(PageNumber, 'GetRattingList1.php')"
+    icon="ion-loading-c"
+    distance="5%">
+  </ion-infinite-scroll>
+
+
+
+     </ion-content>
+</ion-view>

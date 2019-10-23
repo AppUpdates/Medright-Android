@@ -1,0 +1,148 @@
+<ion-side-menus enable-menu-with-back-views="false" cache-view="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left" style="width: 180px;">
+    <ion-content ng-init="getMenus()">
+      <ion-list style="line-height: 17px;"><br><br><br>
+        <ion-item style="background-color: #ffffff;border:transparent;padding-bottom: 10px;
+                    padding-top: 10px;" menu-close>
+          <center>
+          <img ng-if="PatientLogin" ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/userprofile/{{ProfilePic}}" style="border-radius:50%;height: 65px;width: 65px;border: 1px solid black;">
+          <img ng-if="DoctorLogin" ng-src="http://68.183.101.193/mvc/dhaug2017_338/upload/doctor_profile/{{ProfilePic}}" style="border-radius:50%;height: 70px;width: 70px;border: 1px solid black;">        
+          <h4 style="font-size: 16px;font-weight: 400;color: #387ef5;margin-top: 12px;">{{Name}}</h4>
+          <p style="font-size: 12px;color: #000000">{{SOI}}</p></center>
+        </ion-item>
+     <hr>   
+     
+
+         <!-- Patient's Menus Start  -->
+        <ion-item menu-close class="menuStyle" ng-class="{ 'menu1' : Highlight1}" ng-click="goToHome()" transitiontype="slide" direction="left" go-native ng-if="PatientLogin">
+          <img ng-src="icons/HomeBlack.png" ng-if="Highlight1 == false" class="menuImage">
+          <img ng-src="icons/HomeWhite.png" ng-if="Highlight1 == true" class="menuImage">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Home</span>
+        </ion-item>
+
+         <ion-item menu-close class="menuStyle" ng-class="{ 'menu1' : Highlight2}" ng-click="goToProfile()" transitiontype="slide" direction="left" go-native ng-if="PatientLogin">
+          <img ng-src="icons/ProfileBlack.png" ng-if="Highlight2 == false" class="menuImage">
+          <img ng-src="icons/ProfileWhite.png" ng-if="Highlight2 == true" class="menuImage">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Profile</span>
+        </ion-item>
+
+        <ion-item menu-close class="menuStyle" ng-class="{ 'menu1' : Highlight3}" ng-click="goToDoctors()" transitiontype="slide" direction="left" go-native ng-if="PatientLogin">
+          <img ng-src="icons/FindBlack.png" ng-if="Highlight3 == false" class="menuImage">
+          <img ng-src="icons/FindWhite.png" ng-if="Highlight3 == true" class="menuImage">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Find Doctors</span>
+        </ion-item>
+
+       
+
+        <ion-item menu-close class="menuStyle" ng-class="{ 'menu1' : Highlight4}" ng-click="goToMedicationList()" transitiontype="slide" direction="left" go-native ng-if="PatientLogin">
+          <img ng-src="icons/FindDoctorBlack.png"  ng-if="Highlight4 == false" class="menuImage">
+          <img ng-src="icons/FindDoctorWhite.png" ng-if="Highlight4 == true" class="menuImage">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Medication List</span>
+        </ion-item>        
+
+       
+
+        <ion-item menu-close class="menuStyle" ng-class="{ 'menu1' : Highlight5}" ng-click="goToEmail()" ng-if="PatientLogin" transitiontype="slide" direction="left" go-native>
+          <img ng-src="icons/EmailDoctorBlack.png" ng-if="Highlight5 == false" class="menuImage">
+           <img ng-src="icons/EmailDoctorWhite.png" ng-if="Highlight5 == true" class="menuImage">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Email Your Doctor</span>
+          <!-- <span style="float: right;padding-top: 25px 12px;background-color: white;color: #50A0FF;border-radius: 20px;padding: 3px;    height: 24px;padding-right: 8px;margin-top: -2px;padding-left: 8px;">1</span> -->
+        </ion-item>     
+
+          <ion-item menu-close class="menuStyle" ng-class="{ 'menu1' : Highlight13}"  ng-click="goToChats()" transitiontype="slide" direction="left" go-native  ng-if="PatientLogin" >
+          <img ng-src="icons/chat.png" ng-if="Highlight13 == false" class="menuImage">
+          <img ng-src="icons/chat_w.png"  ng-if="Highlight13 == true" class="menuImage">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Chat</span>
+        </ion-item>   
+
+       <!--  <ion-item menu-close class="menuStyle" ng-click="goToReminder()" ng-if="PatientLogin">
+          <img ng-src="icons/HealthReminderBlack.png" class="menuImage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Health Reminders</span>
+        </ion-item>
+
+        <ion-item menu-close class="menuStyle" ng-click="goToMedicalRecord()" ng-if="PatientLogin"> 
+            <img ng-src="icons/MedicalRecordsBlack.png" class="menuImage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Medical Records</span>
+        </ion-item> -->
+        <!-- Patient's Menus End -->
+
+        <!-- Doctor's Menus Start -->
+         <ion-item class="menuStyle" ng-class="{ 'menu1' : Highlight6}"  menu-close ng-click="goToDoctorHome()" ng-if="DoctorLogin" transitiontype="slide" direction="left" go-native>
+            <img ng-src="icons/home1.png" ng-if="Highlight6 == false" class="menuImage">
+            <img ng-src="icons/homewhite1.png" ng-if="Highlight6 == true" class="menuImage">
+            &nbsp;&nbsp;&nbsp;
+            <span class="margin2">Home</span>
+        </ion-item>
+
+
+
+        <ion-item class="menuStyle" ng-class="{ 'menu1' : Highlight7}"  menu-close ng-click="goToDoctorApp()" ng-if="DoctorLogin" transitiontype="slide" direction="left" go-native>
+          <img ng-src="icons/schedule.png" ng-if="Highlight7 == false" class="menuImage">
+          <img ng-src="icons/schedulewhite.png" ng-if="Highlight7 == true" class="menuImage">&nbsp;&nbsp;&nbsp;
+          <span class="margin2">Appointments</span>
+        </ion-item>
+
+        <ion-item class="menuStyle" ng-class="{ 'menu1' : Highlight8}"  menu-close ng-click="goToDoctorSchedule()" ng-if="DoctorLogin" transitiontype="slide" direction="left" go-native>
+          <img ng-src="icons/appointment.png" ng-if="Highlight8 == false" class="menuImage">
+          <img ng-src="icons/appoinment_w.png" ng-if="Highlight8 == true" class="menuImage">&nbsp;&nbsp;&nbsp;
+          <span class="margin2">Schedule Time</span>
+        </ion-item>  
+
+        <ion-item class="menuStyle" ng-class="{ 'menu1' : Highlight9}"  menu-close ng-click="goToNotes()" ng-if="DoctorLogin" transitiontype="slide" direction="left" go-native>
+          <img ng-src="icons/note.png" class="menuImage" ng-if="Highlight9 == false">
+          <img ng-src="icons/note_w.png" class="menuImage" ng-if="Highlight9 == true">&nbsp;&nbsp;&nbsp;
+          <span class="margin2">Notes</span>
+        </ion-item> 
+
+        <ion-item class="menuStyle" ng-class="{ 'menu1' : Highlight10}"  style="margin-left: 7px; padding-top: 9px;" menu-close ng-click="goToMedication()" ng-if="DoctorLogin" transitiontype="slide" direction="left" go-native>
+          <img ng-src="icons/pills1.png" ng-if="Highlight10 == false" >
+          <img ng-src="icons/pills1_w.png" ng-if="Highlight10 == true" >&nbsp;&nbsp;&nbsp;
+          <span class="margin2">Medication</span>
+        </ion-item> 
+
+         <ion-item class="menuStyle" ng-class="{ 'menu1' : Highlight12}"  style="margin-left: 7px; padding-top: 9px;" menu-close ng-click="goToChats1()" ng-if="DoctorLogin" transitiontype="slide" direction="left" go-native>
+          <img ng-src="icons/chat.png" ng-if="Highlight12 == false" >
+          <img ng-src="icons/chat_w.png" ng-if="Highlight12 == true" >&nbsp;&nbsp;&nbsp;
+          <span class="margin2">Chat</span>
+        </ion-item> 
+     
+         <ion-item class="menuStyle" style="margin-left: -26px;padding-top: 0px;" menu-close ng-if="DoctorLogin" transitiontype="slide" direction="left" go-native>
+            <ion-toggle class="menuStyle" ng-model="Available"
+                    ng-change="DisableAvailability(Available)"  ng-class="{ 'menu1' : Highlight11}" style="border-color: transparent;margin-left: 17px;" >
+          <img ng-src="icons/video.png" class="menuImage"  ng-if="Highlight11 == false">
+          <img ng-src="icons/video_w.png" class="menuImage"  ng-if="Highlight11 == true">&nbsp;&nbsp;&nbsp;           
+          <span class="margin2">Video Visit</span>
+           </ion-toggle>
+        </ion-item> 
+    
+<!--          <ion-item menu-close class="menuStyle" ng-click="goToChats()" transitiontype="slide" direction="left" go-native >
+          <img ng-src="icons/chat.png" class="menuImage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">Chat</span>
+        </ion-item> -->
+
+     <!--    <ion-item  class="menuStyle"  style="margin: -19px;" ng-if="DoctorLogin">        
+          <ion-toggle class="menuStyle" ng-model="Available"
+                    ng-change="DisableAvailability(Available)"  ng-class="{ 'menu1' : Highlight9}" style="border-color: transparent;margin-left: 17px;" >
+            <img ng-src="icons/video.png" class="menuImage">&nbsp;&nbsp;&nbsp; 
+            <span class="margin2">Video Visit</span>
+          </ion-toggle>
+        </ion-item>  -->
+        <!-- Doctor's Menus End -->
+
+   <hr>
+        <ion-item menu-close class="menuStyle" ng-click="logOut()" transitiontype="slide" direction="left" go-native>
+          <img ng-src="icons/LogoutBlack.png" class="menuImage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="margin2">LogOut</span>
+        </ion-item> 
+  
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

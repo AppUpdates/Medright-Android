@@ -1,0 +1,47 @@
+<ion-view view-title="Reply" cache-view="false" ng-init="loadReply()">
+  <ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-android-arrow-back" ng-click="GoBack()">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="scroll-content ionic-scroll  has-header has-tabs">
+     <div class="card" style="line-height: 12px;border:1px solid green;">
+      <div class="item item-avatar" style="margin-bottom: -15px;">
+        <img src="http://68.183.101.193/android/338/uploads/{{MainReply.FileName}}">
+        <h2>{{MainReply.FirstName}} {{MainReply.LastName}}</h2>
+        <!--<p style="font-size: 12px;">{{dis.CreatedOn | date: 'dd/MM/yy H:mm a'}}</p>-->
+        <p style="font-size: 12px;">{{MainReply.CreatedOn | datetime}}</p>
+      </div>
+      <div class="item1 item-body" style="line-height: 17px;font-size: 13px;padding-top: 0px;padding-bottom: 0px">
+        <p>
+          {{MainReply.Message}}
+        </p>
+      </div>
+    </div>
+
+     <div class="list card" style="border:1px solid lightgray;">
+      <!-- <center><h4>{{ReplyList[0].Mess}}</h4></center> -->
+       <div class="item item-avatar" ng-repeat="rep in ReplyList" style="height: 49px;min-height: 47px;">
+          <img data-ng-src="{{getUrl(rep.FileName)}}" style="margin-top: -12px;" />
+          <h2 style="margin-top: -13px;">{{rep.FirstName}}&nbsp;{{rep.LastName}}</h2>
+          <p style="font-size: 12px;margin-top: -6px;">{{rep.Message}}</p>
+          <p style="margin-top: -9px;font-size: 10px;float:right">{{rep.CreatedOn | datetime}}</p>
+       </div>
+     </div>    
+  </ion-content>
+  <div class="row" style="margin-top: 173%;">
+      <div class="col col-80">
+        <label class="item item-input" style="border-color:green;height: 33px;">
+          <input type="text" placeholder="Enter..." ng-model="RepMessage">
+
+        </label>
+      </div>
+      <div class="col col-20">
+        <button class="button button-small button-balanced" style="width: 50px;"
+                ng-click="replyMessage(RepMessage)">
+          Reply
+        </button>
+      </div>
+    </div>
+</ion-view>
+
